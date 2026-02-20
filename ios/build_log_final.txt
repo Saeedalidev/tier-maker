@@ -1,0 +1,813 @@
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, id:EF47C8F7-A51E-4B26-B0F7-9AFFE94E7C0D, OS:18.1, name:iPhone 13 Pro Max }
+{ platform:iOS Simulator, id:EF47C8F7-A51E-4B26-B0F7-9AFFE94E7C0D, OS:18.1, name:iPhone 13 Pro Max }
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/jsinspector-modern/TracingAgent.cpp:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspectortracing/jsinspector-modern/tracing/RuntimeSamplingProfileTraceEventSerializer.h:101:13: warning: parameter 'profileStartUnixTimestamp' not found in the function declaration [-Wdocumentation]
+  101 |    * \param profileStartUnixTimestamp The Unix timestamp of the start of the
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspectortracing/jsinspector-modern/tracing/RuntimeSamplingProfileTraceEventSerializer.h:101:13: note: did you mean 'profileStartTimestamp'?
+  101 |    * \param profileStartUnixTimestamp The Unix timestamp of the start of the
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+      |             profileStartTimestamp
+1 warning generated.
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/jsinspector-modern/HostAgent.cpp:243:13: warning: parameter 'text.' not found in the function declaration [-Wdocumentation]
+  243 |    * \param text. You must ensure that the frontend has enabled Log
+      |             ^~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/jsinspector-modern/HostAgent.cpp:243:13: note: did you mean 'text'?
+  243 |    * \param text. You must ensure that the frontend has enabled Log
+      |             ^~~~~
+      |             text
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/Registration.cpp:9:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/ConnectionDemux.h:21:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/inspector/chrome/CDPHandler.h:107:14: warning: parameter 'onDisconnect' not found in the function declaration [-Wdocumentation]
+  107 |   /// \param onDisconnect Function that will be invoked upon calling
+      |              ^~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/inspector/chrome/CDPHandler.h:107:14: note: did you mean 'onUnregister'?
+  107 |   /// \param onDisconnect Function that will be invoked upon calling
+      |              ^~~~~~~~~~~~
+      |              onUnregister
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeTargetDelegate.cpp:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeTargetDelegate.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/cdp/CDPDebugAPI.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/AsyncDebuggerAPI.h:19:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/DebuggerAPI.h:18:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:78:20: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'uint32_t' (aka 'unsigned int') [-Wshorten-64-to-32]
+   78 |     return frames_.size();
+      |     ~~~~~~ ~~~~~~~~^~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:164:35: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'ScopeDepth' (aka 'unsigned int') [-Wshorten-64-to-32]
+  164 |     return variableCountsByScope_.size();
+      |     ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+2 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeAgentDelegate.cpp:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeAgentDelegate.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeTargetDelegate.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/cdp/CDPDebugAPI.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/AsyncDebuggerAPI.h:19:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/DebuggerAPI.h:18:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:78:20: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'uint32_t' (aka 'unsigned int') [-Wshorten-64-to-32]
+   78 |     return frames_.size();
+      |     ~~~~~~ ~~~~~~~~^~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:164:35: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'ScopeDepth' (aka 'unsigned int') [-Wshorten-64-to-32]
+  164 |     return variableCountsByScope_.size();
+      |     ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+2 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/executor/HermesExecutorFactory.cpp:16:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeTargetDelegate.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/cdp/CDPDebugAPI.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/AsyncDebuggerAPI.h:19:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/DebuggerAPI.h:18:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:78:20: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'uint32_t' (aka 'unsigned int') [-Wshorten-64-to-32]
+   78 |     return frames_.size();
+      |     ~~~~~~ ~~~~~~~~^~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:164:35: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'ScopeDepth' (aka 'unsigned int') [-Wshorten-64-to-32]
+  164 |     return variableCountsByScope_.size();
+      |     ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+2 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/ConnectionDemux.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/ConnectionDemux.h:21:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/inspector/chrome/CDPHandler.h:107:14: warning: parameter 'onDisconnect' not found in the function declaration [-Wdocumentation]
+  107 |   /// \param onDisconnect Function that will be invoked upon calling
+      |              ^~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/inspector/chrome/CDPHandler.h:107:14: note: did you mean 'onUnregister'?
+  107 |   /// \param onDisconnect Function that will be invoked upon calling
+      |              ^~~~~~~~~~~~
+      |              onUnregister
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/runtime/hermes/HermesInstance.cpp:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/hermes/inspector-modern/chrome/HermesRuntimeTargetDelegate.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/cdp/CDPDebugAPI.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/AsyncDebuggerAPI.h:19:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/DebuggerAPI.h:18:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:78:20: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'uint32_t' (aka 'unsigned int') [-Wshorten-64-to-32]
+   78 |     return frames_.size();
+      |     ~~~~~~ ~~~~~~~~^~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine/hermes/Public/DebuggerTypes.h:164:35: warning: implicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'ScopeDepth' (aka 'unsigned int') [-Wshorten-64-to-32]
+  164 |     return variableCountsByScope_.size();
+      |     ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+2 warnings generated.
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios/ReactCommon/RCTTurboModuleManager.mm:242:55: warning: 'extraModulesForBridge:' is deprecated: Please make all native modules returned from this method TurboModule-compatible. [-Wdeprecated-declarations]
+  242 |         for (id<RCTBridgeModule> module in [_delegate extraModulesForBridge:nil]) {
+      |                                                       ^
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios/ReactCommon/RCTTurboModuleManager.mm:8:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios/ReactCommon/RCTTurboModuleManager.h:61:18: note: 'extraModulesForBridge:' has been explicitly marked deprecated here
+   61 |     __attribute((deprecated("Please make all native modules returned from this method TurboModule-compatible.")));
+      |                  ^
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios/ReactCommon/RCTTurboModuleManager.mm:408:50: warning: 'installJSIBindingsWithRuntime:' is deprecated: Use 'installJSIBindingsWithRuntime:callInvoker:' instead [-Wdeprecated-declarations]
+  408 |       [(id<RCTTurboModuleWithJSIBindings>)module installJSIBindingsWithRuntime:*runtime];
+      |                                                  ^
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios/ReactCommon/RCTTurboModuleManager.mm:31:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-NativeModulesApple/ReactCommon/RCTTurboModuleWithJSIBindings.h:24:20: note: 'installJSIBindingsWithRuntime:' has been explicitly marked deprecated here
+   24 |     __attribute__((deprecated("Use 'installJSIBindingsWithRuntime:callInvoker:' instead")));
+      |                    ^
+2 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/utils.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/utils.h:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/animations/primitives.h:14:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/updateMountedFlag.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/updateMountedFlag.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/stubs/stubs.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/stubs/stubs.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/stubs/StubViewTree.h:13:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/view/YogaStylableProps.cpp:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/conversions.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/view/YogaLayoutableShadowNode.cpp:14:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/LayoutConformanceShadowNode.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/LayoutConformanceProps.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/propsConversions.h:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/conversions.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManagerUpdateShadowTree.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManagerBinding.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManagerBinding.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/PointerEventsProcessor.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/PointerHoverTracker.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManager.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/TelemetryController.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/TelemetryController.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingTransaction.h:10:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/scheduler/SurfaceManager.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/scheduler/SurfaceManager.h:16:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/scheduler/SurfaceHandler.cpp:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/stubs/StubViewTree.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/stubs/StubViewTree.h:13:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.cpp:8:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTreeRevision.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTreeRevision.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingOverrideDelegate.h:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingTransaction.h:10:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTreeRegistry.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTreeRegistry.h:14:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTree.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/scheduler/Scheduler.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/scheduler/Scheduler.h:20:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingOverrideDelegate.h:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingTransaction.h:10:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/root/RootShadowNode.cpp:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/conversions.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/root/RootProps.cpp:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/conversions.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/PointerHoverTracker.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/PointerHoverTracker.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/PointerEventsProcessor.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/PointerEventsProcessor.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/PointerHoverTracker.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/MountingTransaction.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/MountingTransaction.h:10:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/MountingCoordinator.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/consistency/LazyShadowTreeRevisionConsistencyManager.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/uimanager/consistency/LazyShadowTreeRevisionConsistencyManager.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTreeRegistry.h:14:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/LayoutAnimationKeyFrameManager.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/LayoutAnimationKeyFrameManager.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/animations/primitives.h:14:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/LayoutAnimationDriver.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/animations/LayoutAnimationDriver.h:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/animations/LayoutAnimationKeyFrameManager.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/animations/primitives.h:14:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/observers/events/EventPerformanceLogger.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/observers/events/EventPerformanceLogger.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManagerMountHook.h:11:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/uimanager/UIManager.h:23:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowTree.h:18:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/MountingCoordinator.h:15:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/Differentiator.cpp:8:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/mounting/Differentiator.h:11:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:47:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   47 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:49:3: note: add a deprecation attribute to the declaration to silence this warning
+   49 |   static ShadowViewMutation InsertMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:64:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   64 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:66:3: note: add a deprecation attribute to the declaration to silence this warning
+   66 |   static ShadowViewMutation RemoveMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:83:7: warning: declaration is marked with '@deprecated' command but does not have a deprecation attribute [-Wdocumentation-deprecated-sync]
+   83 |    * @deprecated Pass parentTag instead of parentShadowView.
+      |      ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/mounting/ShadowViewMutation.h:85:3: note: add a deprecation attribute to the declaration to silence this warning
+   85 |   static ShadowViewMutation UpdateMutation(
+      |   ^
+      |   FMT_DEPRECATED 
+3 warnings generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/view/BaseViewProps.cpp:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/BoxShadowPropsConversions.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/CSSConversions.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSColor.h:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSColorFunction.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon/react/renderer/components/view/AccessibilityProps.cpp:12:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/propsConversions.h:10:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Fabric/react/renderer/components/view/conversions.h:17:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSAngle.h:13:
+In file included from /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSDataType.h:15:
+/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-renderercss/react/renderer/css/CSSSyntaxParser.h:150:13: warning: parameter '<ReturnT>' not found in the function declaration [-Wdocumentation]
+  150 |    * @param <ReturnT> caller-specified return type of visitors. This type will
+      |             ^~~~~~~~~
+1 warning generated.
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/React/DevSupport/RCTInspectorNetworkHelper.mm:86:27: warning: implicit conversion loses integer precision: 'NSInteger' (aka 'long') to 'uint32_t' (aka 'unsigned int') [-Wshorten-64-to-32]
+   86 |       listener->onHeaders(httpResponse.statusCode, headersMap);
+      |                 ~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -cc1 -Wundef-prefix\=TARGET_OS_ -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -ferror-limit 19 -serialize-diagnostic-file /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/Objects-normal/arm64/RCTShadowView.dia -Wdeprecated-objc-isa-usage -Werror\=deprecated-objc-isa-usage -Werror\=implicit-function-declaration -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Wno-implicit-atomic-properties -Werror\=deprecated-objc-isa-usage -Wno-objc-interface-ivars -Werror\=objc-root-class -Wno-arc-repeated-use-of-weak -Wimplicit-retain-self -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wconditional-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-float-conversion -Wnon-literal-null-conversion -Wobjc-literal-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wdeprecated-implementations -Wno-implicit-fallthrough -Wprotocol -Wdeprecated-declarations -Wno-sign-conversion -Winfinite-recursion -Wcomma -Wblock-capture-autoreleasing -Wstrict-prototypes -Wno-semicolon-before-method-body -Wunguarded-availability -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -Wno-reserved-identifier -Wno-gnu-folding-constant -index-store-path /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Index.noindex/DataStore -index-unit-output-path /Pods.build/Debug-iphonesimulator/React-Core.build/Objects-normal/arm64/RCTShadowView.o -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/DoubleConversion/DoubleConversion.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/RCTDeprecation/RCTDeprecation.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React_runtimeexecutor/React-runtimeexecutor.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/SocketRocket/SocketRocket.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/fmt/fmt.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/folly/RCT-Folly.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/glog/glog.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/jsi/React-jsi.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/jsinspector_modern/React-jsinspector.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/jsinspector_modern_cdp/React-jsinspectorcdp.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/jsinspector_modern_network/React-jsinspectornetwork.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/jsinspector_modern_tracing/React-jsinspectortracing.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/react_debug/React-debug.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/react_featureflags/React-featureflags.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/react_renderer_debug/React-rendererdebug.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/react_runtime/React-jsitooling.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/react_utils/React-utils.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/reacthermes/React-hermes.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/yoga/Yoga.modulemap -fmodule-map-file\=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap -fmodule-map-file\=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap -fmodule-map-file\=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/CoreGraphics.framework/Modules/module.modulemap -fmodule-map-file\=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/QuartzCore.framework/Modules/module.modulemap -fmodule-map-file\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/Yoga/Yoga.modulemap -o /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/Objects-normal/arm64/RCTShadowView.o -disable-free -emit-obj -x objective-c /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/React/Views/RCTShadowView.m -target-abi darwinpcs -target-cpu apple-m1 -target-feature +v8.5a -target-feature +aes -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +lse -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sha2 -target-feature +sha3 -target-feature +neon -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -triple arm64-apple-ios15.1.0-simulator -target-linker-version 1115.7.3 -target-sdk-version\=18.1 -fmodules-validate-system-headers -fno-modulemap-allow-subdirectory-search -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.1.sdk -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16 -fmodule-file\=CoreGraphics\=/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/ExplicitPrecompiledModules/CoreGraphics-8VUTJC3DN246EAKPDGT9Y7U7P.pcm -fmodule-file\=Foundation\=/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/ExplicitPrecompiledModules/Foundation-8OVOZ79R4IB7J645QCWLPWSCE.pcm -fmodule-file\=QuartzCore\=/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/ExplicitPrecompiledModules/QuartzCore-4NBMU0F376WD5ZJPXPZCVOOTY.pcm -fmodule-file\=UIKit\=/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/ExplicitPrecompiledModules/UIKit-CC4I3QZQTAHQEG10HP4C8M5Y3.pcm -fmodule-file\=yoga\=/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/ExplicitPrecompiledModules/yoga-1TR16ZC67SEMQLK60SARY7HDR.pcm -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/React-Core-own-target-headers.hmap -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/React-Core-all-non-framework-target-headers.hmap -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-Core/include -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Private/React-Core -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/DoubleConversion -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/RCT-Folly -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-Core -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-callinvoker -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-cxxreact -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-debug -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-featureflags -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-hermes -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsi -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsiexecutor -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspector -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspectorcdp -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspectornetwork -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsinspectortracing -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-jsitooling -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-logger -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-oscompat -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-perflogger -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-performancetimeline -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-rendererconsistency -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-rendererdebug -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-runtimeexecutor -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-runtimescheduler -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-timing -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-utils -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/Yoga -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/boost -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/fast_float -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/fmt -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/glog -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine -I /Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/ReactCommon -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/FlipperKit -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/ReactCommon -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/React-hermes -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Headers/Public/hermes-engine -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-runtimeexecutor/React_runtimeexecutor.framework/Headers -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-runtimeexecutor/React_runtimeexecutor.framework/Headers/platform/ios -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-jsinspector/jsinspector_modern.framework/Headers -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-jsinspectorcdp/jsinspector_moderncdp.framework/Headers -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-jsitooling/JSITooling.framework/Headers -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-utils/React_utils.framework/Headers -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-utils/React_utils.framework/Headers/react/utils/platform/ios -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/RCTDeprecation/RCTDeprecation.framework/Headers -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/glog -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/boost -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/DoubleConversion -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/fast_float/include -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/fmt/include -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/SocketRocket -I /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/RCT-Folly -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/DerivedSources-normal/arm64 -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/DerivedSources/arm64 -I /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/DerivedSources -F /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-Core -F /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/hermes-engine/destroot/Library/Frameworks/universal -F /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/XCFrameworkIntermediates/hermes-engine/Pre-built -F /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Products/Debug-iphonesimulator/React-hermes -iquote /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/React-Core-generated-files.hmap -iquote /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/React-Core-project-headers.hmap -isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.1.sdk/usr/local/include -isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.1.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -ivfsstatcache /Users/waheed/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.1-22B74-3d93aac3a03ebac1dd8474c5def773dc.sdkstatcache -ivfsoverlay /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Pods-8699adb1dd336b26511df848a716bd42-VFS-iphonesimulator/all-product-headers.yaml -std\=gnu11 -fexceptions -fmodules -fmodule-name\=React -fno-implicit-modules -fobjc-exceptions -fmax-type-align\=16 -fpascal-strings -fvisibility-inlines-hidden-static-local-var -mdarwin-stkchk-strong-link -fno-odr-hash-protocols -pic-level 2 -fencode-extended-block-signature -stack-protector 1 -fobjc-runtime\=ios-15.1.0 -fobjc-arc -fobjc-runtime-has-weak -fobjc-weak -fgnuc-version\=4.2.1 -fblocks -ffp-contract\=on -fclang-abi-compat\=4.0 -fno-experimental-relative-c++-abi-vtables -fno-file-reproducible -clang-vendor-feature\=+disableNonDependentMemberExprInCurrentInstantiation -clang-vendor-feature\=+enableAggressiveVLAFolding -clang-vendor-feature\=+revert09abecef7bbf -clang-vendor-feature\=+thisNoAlignAttr -clang-vendor-feature\=+thisNoNullAttr -clang-vendor-feature\=+disableAtImportPrivateFrameworkInImplementationError -O0 -fdebug-compilation-dir\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods -fcoverage-compilation-dir\=/Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods -fobjc-msgsend-selector-stubs -fregister-global-dtors-with-atexit -fno-strict-return -mrelax-all -dwarf-version\=4 -debugger-tuning\=lldb -disable-llvm-verifier -mframe-pointer\=non-leaf -funwind-tables\=1 -clear-ast-before-backend -discard-value-names -main-file-name RCTShadowView.m -debug-info-kind\=standalone -fdiagnostics-hotness-threshold\=0 -fdiagnostics-misexpect-tolerance\=0 -D COCOAPODS\=1 -D DEBUG\=1 -D OBJC_OLD_DISPATCH_PROTOTYPES\=0 -D POD_CONFIGURATION_DEBUG\=1 -D RCT_METRO_PORT\= -D USE_HERMES\=1 -D __GCC_HAVE_DWARF2_CFI_ASM\=1 -include /Users/waheed/Documents/RN/TierMaker/TierMaker/ios/Pods/Target\ Support\ Files/React-Core/React-Core-prefix.pch -MT dependencies -dependency-file /Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-Core.build/Objects-normal/arm64/RCTShadowView.d -skip-unused-modulemap-deps
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native/React/Views/RCTShadowView.m:395:20: warning: implicit conversion loses integer precision: 'size_t' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
+  395 |   int childCount = YGNodeGetChildCount(self.yogaNode);
+      |       ~~~~~~~~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+/Users/waheed/Documents/RN/TierMaker/TierMaker/node_modules/react-native-iap/ios/IapSerializationUtils.swift:209:40: error: value of type 'Transaction' has no member 'appTransactionID'
+        result["appTransactionID"] = t.appTransactionID
+                                     ~ ^~~~~~~~~~~~~~~~
+note: Removed stale file '/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/TierMaker.build/Debug-iphonesimulator/TierMaker.build/InputFileList-00EEFC60759A1932668264C0-Pods-TierMaker-frameworks-Debug-input-files-9f25c8a77768cc45ac16b19c57b69933-resolved.xcfilelist'
+
+note: Removed stale file '/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/TierMaker.build/Debug-iphonesimulator/TierMaker.build/OutputFileList-00EEFC60759A1932668264C0-Pods-TierMaker-frameworks-Debug-output-files-077459ac99b67007f51da14137f3c052-resolved.xcfilelist'
+
+note: Removed stale file '/Users/waheed/Library/Developer/Xcode/DerivedData/TierMaker-gqnohtvwdahrjaasllfklkazaxob/Build/Intermediates.noindex/TierMaker.build/Debug-iphonesimulator/TierMaker.build/Script-00EEFC60759A1932668264C0.sh'
+
+warning: Run script build phase '[CP-User] [Hermes] Replace Hermes for the right configuration, if needed' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'hermes-engine' from project 'Pods')
+warning: Run script build phase 'Bundle React Native code and images' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TierMaker' from project 'TierMaker')
+warning: Run script build phase '[CP-User] [RNFB] Core Configuration' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TierMaker' from project 'TierMaker')
+warning: Run script build phase '[CP-User] [RNGoogleMobileAds] Configuration' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TierMaker' from project 'TierMaker')
+note: Run script build phase '[CP-User] [RN]Check FBReactNativeSpec' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'React-RCTFBReactNativeSpec' from project 'Pods')
+** BUILD FAILED **
+
