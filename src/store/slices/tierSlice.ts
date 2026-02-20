@@ -25,11 +25,13 @@ export interface TierList {
 interface TierState {
     tierLists: TierList[];
     currentTierListId: string | null;
+    theme: 'dark' | 'light';
 }
 
 const initialState: TierState = {
     tierLists: [],
     currentTierListId: null,
+    theme: 'light',
 };
 
 const defaultRows: TierRow[] = [
@@ -197,6 +199,9 @@ export const tierSlice = createSlice({
             if (currentList) {
                 currentList.unrankedItems = action.payload.items;
             }
+        },
+        toggleTheme: (state) => {
+            state.theme = state.theme === 'dark' ? 'light' : 'dark';
         }
     },
 });
@@ -215,6 +220,7 @@ export const {
     clearList,
     reorderLists,
     reorderRows,
-    reorderUnrankedItems
+    reorderUnrankedItems,
+    toggleTheme
 } = tierSlice.actions;
 export default tierSlice.reducer;

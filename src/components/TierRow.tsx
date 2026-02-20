@@ -1,5 +1,8 @@
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { Colors, Spacing, Shadows } from '../theme/theme';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import { getDesignTokens } from '../theme/theme';
 
 interface TierRowProps {
     label: string;
@@ -8,19 +11,18 @@ interface TierRowProps {
     onLabelPress?: () => void;
     onLabelLongPress?: () => void;
     onLayout?: (event: any) => void;
-    isHighlighted?: boolean;
     children?: React.ReactNode;
 }
 
-const TierRowComp = ({ label, color, labelImageUri, onLabelPress, onLabelLongPress, onLayout, isHighlighted, children }: TierRowProps) => {
+const TierRowComp = ({ label, color, labelImageUri, onLabelPress, onLabelLongPress, onLayout, children }: TierRowProps) => {
+    const theme = useSelector((state: RootState) => state.tier.theme);
+    const DESIGN = getDesignTokens(theme);
+
     return (
         <View
             ref={null}
             collapsable={false}
-            style={[
-                styles.rowContainer,
-                isHighlighted && { backgroundColor: 'rgba(108, 72, 255, 0.2)', borderColor: Colors.primary, borderWidth: 1 }
-            ]}
+            style={[styles.rowContainer, { backgroundColor: DESIGN.surface }]}
             onLayout={onLayout}
         >
             <TouchableOpacity
@@ -38,7 +40,7 @@ const TierRowComp = ({ label, color, labelImageUri, onLabelPress, onLabelLongPre
                     <Text style={styles.labelText} numberOfLines={2}>{label}</Text>
                 )}
             </TouchableOpacity>
-            <View style={styles.itemsContainer}>
+            <View style={[styles.itemsContainer, { backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)' }]}>
                 <View style={styles.itemsWrapper}>
                     {children}
                 </View>
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row',
         minHeight: 90,
-        backgroundColor: Colors.surface,
         marginBottom: 2,
         borderRadius: 12,
     },
@@ -77,8 +78,7 @@ const styles = StyleSheet.create({
     },
     itemsContainer: {
         flex: 1,
-        padding: Spacing.s,
-        backgroundColor: 'rgba(255,255,255,0.02)',
+        padding: 8,
     },
     itemsWrapper: {
         flexDirection: 'row',

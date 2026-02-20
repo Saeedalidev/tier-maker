@@ -17,33 +17,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { createNewList, reorderLists, deleteList, renameList } from '../store/slices/tierSlice';
-import { Colors, Spacing, Shadows } from '../theme/theme';
+import { getDesignTokens } from '../theme/theme';
 import DraggableFlatList, { ScaleDecorator, RenderItemParams } from 'react-native-draggable-flatlist';
 import { TierList } from '../store/slices/tierSlice';
 
 const { width } = Dimensions.get('window');
-
-// ─── Design tokens ────────────────────────────────────────────────────────────
-const DESIGN = {
-    bg: '#0A0A0F',
-    surface: '#111118',
-    card: '#16161F',
-    cardBorder: '#1E1E2E',
-    accent: '#7C5CFC',
-    accentSoft: 'rgba(124, 92, 252, 0.15)',
-    accentGlow: 'rgba(124, 92, 252, 0.35)',
-    cyan: '#00D4FF',
-    cyanSoft: 'rgba(0, 212, 255, 0.12)',
-    green: '#00E676',
-    greenSoft: 'rgba(0, 230, 118, 0.12)',
-    red: '#FF4D6D',
-    redSoft: 'rgba(255, 77, 109, 0.12)',
-    textPrimary: '#F0F0FA',
-    textSecondary: '#8585A0',
-    textMuted: '#45455A',
-    border: '#1A1A2A',
-    pill: '#1A1A28',
-};
 
 // ─── Animated Card ────────────────────────────────────────────────────────────
 const AnimatedCard = ({
@@ -57,6 +35,7 @@ const AnimatedCard = ({
     onShare,
     onDelete,
     navigation,
+    DESIGN,
 }: any) => {
     const scaleAnim = useRef(new Animated.Value(1)).current;
 
@@ -83,24 +62,35 @@ const AnimatedCard = ({
                 onLongPress={drag}
                 onPressIn={handlePressIn}
                 onPressOut={handlePressOut}
-                style={[styles.card, isActive && styles.cardActive]}
+                style={[
+                    styles.card,
+                    { backgroundColor: DESIGN.card, borderColor: DESIGN.cardBorder },
+                    isActive && { borderColor: DESIGN.accent, shadowColor: DESIGN.accent, shadowOpacity: 0.4 }
+                ]}
             >
-                {/* Top strip accent */}
-                <View style={[styles.cardAccentBar, { backgroundColor: badgeColor }]} />
-
                 <View style={styles.cardInner}>
                     {/* Header row */}
                     <View style={styles.cardHeaderRow}>
                         {/* Icon badge */}
                         <View style={[styles.cardIconBadge, { backgroundColor: badgeBg }]}>
-                            <Text style={[styles.cardIconEmoji, { color: badgeColor }]}>
-                                {totalItems === 0 ? '📋' : totalItems < 5 ? '🌱' : totalItems < 15 ? '🔥' : '👑'}
-                            </Text>
+                            <Ionicons
+                                name={
+                                    totalItems === 0
+                                        ? 'document-text-outline'
+                                        : totalItems < 5
+                                            ? 'leaf-outline'
+                                            : totalItems < 15
+                                                ? 'flame-outline'
+                                                : 'ribbon-outline'
+                                }
+                                size={18}
+                                color={badgeColor}
+                            />
                         </View>
 
                         <View style={styles.cardTitleBlock}>
                             <View style={styles.titleEditRow}>
-                                <Text style={styles.cardTitle} numberOfLines={1}>{item.title}</Text>
+                                <Text style={[styles.cardTitle, { color: DESIGN.textPrimary }]} numberOfLines={1}>{item.title}</Text>
                                 <TouchableOpacity
                                     style={styles.renameBtn}
                                     onPress={() => onRename(item.id, item.title)}
@@ -110,19 +100,23 @@ const AnimatedCard = ({
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.metaRow}>
-                                <View style={styles.metaPill}>
+                                <View style={[styles.metaPill, { backgroundColor: DESIGN.pill }]}>
                                     <Ionicons name="layers-outline" size={11} color={DESIGN.textMuted} />
-                                    <Text style={styles.metaText}>{tierCount} tiers</Text>
+                                    <Text style={[styles.metaText, { color: DESIGN.textMuted }]}>{tierCount} tiers</Text>
                                 </View>
-                                <View style={[styles.metaPill, { marginLeft: 6 }]}>
+                                <View style={[styles.metaPill, { marginLeft: 6, backgroundColor: DESIGN.pill }]}>
                                     <Ionicons name="grid-outline" size={11} color={DESIGN.textMuted} />
-                                    <Text style={styles.metaText}>{totalItems} items</Text>
+                                    <Text style={[styles.metaText, { color: DESIGN.textMuted }]}>{totalItems} items</Text>
                                 </View>
                             </View>
                         </View>
 
                         <TouchableOpacity
-                            style={[styles.menuBtn, isMenuOpen && styles.menuBtnActive]}
+                            style={[
+                                styles.menuBtn,
+                                { backgroundColor: DESIGN.surface, borderColor: DESIGN.border },
+                                isMenuOpen && { backgroundColor: DESIGN.accentSoft, borderColor: DESIGN.accent }
+                            ]}
                             onPress={() => onMenuPress(item.id)}
                             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                         >
@@ -147,7 +141,7 @@ const AnimatedCard = ({
                                             {
                                                 backgroundColor: `${rowColor}`,
                                                 borderColor: `${rowColor}60`,
-                                                flex: Math.max(row.items.length, 1),
+                                                flex: 1,
                                             },
                                         ]}
                                     >
@@ -162,7 +156,7 @@ const AnimatedCard = ({
 
                     {/* Action menu */}
                     {isMenuOpen && (
-                        <View style={styles.actionMenu}>
+                        <View style={[styles.actionMenu, { borderTopColor: DESIGN.cardBorder }]}>
                             <ActionButton
                                 icon="pencil"
                                 label="Edit"
@@ -212,9 +206,12 @@ const ActionButton = ({ icon, label, color, bg, onPress }: any) => (
 const HomeScreen = ({ navigation }: any) => {
     const dispatch = useDispatch();
     const tierLists = useSelector((state: RootState) => state.tier.tierLists);
+    const theme = useSelector((state: RootState) => state.tier.theme);
+    const isDarkMode = theme === 'dark';
+    const DESIGN = getDesignTokens(theme);
+
     const [searchQuery, setSearchQuery] = useState('');
     const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
-    const headerAnim = useRef(new Animated.Value(0)).current;
 
     const filteredLists = useMemo(() => {
         if (!searchQuery.trim()) return tierLists;
@@ -276,31 +273,31 @@ const HomeScreen = ({ navigation }: any) => {
     );
 
     return (
-        <SafeAreaView style={styles.root}>
-            <StatusBar barStyle="light-content" backgroundColor={DESIGN.bg} />
+        <SafeAreaView style={[styles.root, { backgroundColor: DESIGN.bg }]}>
+            <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} backgroundColor={DESIGN.bg} />
 
             {/* ── Header ── */}
-            <View style={styles.header}>
+            <View style={[styles.header, { backgroundColor: DESIGN.bg, borderBottomColor: DESIGN.border }]}>
                 <View style={styles.headerLeft}>
                     <View style={styles.logoMark}>
                         <Text style={styles.logoMarkText}>T</Text>
                     </View>
                     <View>
-                        <Text style={styles.appName}>TierUP</Text>
-                        <Text style={styles.appTagline}>Rank everything</Text>
+                        <Text style={[styles.appName, { color: DESIGN.textPrimary }]}>TierUP</Text>
+                        <Text style={[styles.appTagline, { color: DESIGN.textMuted }]}>Rank everything</Text>
                     </View>
                 </View>
 
                 <View style={styles.headerRight}>
                     <TouchableOpacity
-                        style={styles.headerIconBtn}
+                        style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
                         onPress={() => navigation.navigate('Premium')}
                     >
                         <Ionicons name="diamond-outline" size={20} color={DESIGN.accent} />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={styles.headerIconBtn}
-                        onPress={() => Alert.alert('Settings', 'Coming soon')}
+                        style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
+                        onPress={() => navigation.navigate('Settings')}
                     >
                         <Ionicons name="settings-outline" size={20} color={DESIGN.textSecondary} />
                     </TouchableOpacity>
@@ -311,31 +308,31 @@ const HomeScreen = ({ navigation }: any) => {
             </View>
 
             {/* ── Stats strip ── */}
-            <View style={styles.statsStrip}>
+            <View style={[styles.statsStrip, { backgroundColor: DESIGN.surface, borderBottomColor: DESIGN.border }]}>
                 <View style={styles.statChip}>
                     <Text style={styles.statValue}>{tierLists.length}</Text>
-                    <Text style={styles.statLabel}>Lists</Text>
+                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Lists</Text>
                 </View>
-                <View style={styles.statDivider} />
+                <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
                 <View style={styles.statChip}>
                     <Text style={styles.statValue}>{totalRanked}</Text>
-                    <Text style={styles.statLabel}>Ranked</Text>
+                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Ranked</Text>
                 </View>
-                <View style={styles.statDivider} />
+                <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
                 <View style={styles.statChip}>
                     <Text style={[styles.statValue, { color: DESIGN.green }]}>
                         {tierLists.length > 0 ? '↑' : '—'}
                     </Text>
-                    <Text style={styles.statLabel}>Active</Text>
+                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Active</Text>
                 </View>
             </View>
 
             {/* ── Search ── */}
             <View style={styles.searchWrapper}>
-                <View style={styles.searchBox}>
+                <View style={[styles.searchBox, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
                     <Ionicons name="search-outline" size={17} color={DESIGN.textMuted} />
                     <TextInput
-                        style={styles.searchInput}
+                        style={[styles.searchInput, { color: DESIGN.textPrimary }]}
                         placeholder="Search lists…"
                         placeholderTextColor={DESIGN.textMuted}
                         value={searchQuery}
@@ -351,10 +348,10 @@ const HomeScreen = ({ navigation }: any) => {
 
             {/* ── Section label ── */}
             <View style={styles.sectionHeader}>
-                <Text style={styles.sectionLabel}>
+                <Text style={[styles.sectionLabel, { color: DESIGN.textSecondary }]}>
                     {searchQuery ? `Results for "${searchQuery}"` : 'My Lists'}
                 </Text>
-                <Text style={styles.sectionCount}>{filteredLists.length}</Text>
+                <Text style={[styles.sectionCount, { color: DESIGN.textMuted, backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>{filteredLists.length}</Text>
             </View>
 
             {/* ── List ── */}
@@ -377,18 +374,19 @@ const HomeScreen = ({ navigation }: any) => {
                             onShare={handleShare}
                             onDelete={confirmDelete}
                             navigation={navigation}
+                            DESIGN={DESIGN}
                         />
                     </ScaleDecorator>
                 )}
                 ListEmptyComponent={
                     <View style={styles.emptyState}>
-                        <View style={styles.emptyIconRing}>
+                        <View style={[styles.emptyIconRing, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
                             <Ionicons name="list-outline" size={38} color={DESIGN.textMuted} />
                         </View>
-                        <Text style={styles.emptyTitle}>
+                        <Text style={[styles.emptyTitle, { color: DESIGN.textPrimary }]}>
                             {searchQuery ? 'No results found' : 'No lists yet'}
                         </Text>
-                        <Text style={styles.emptyBody}>
+                        <Text style={[styles.emptyBody, { color: DESIGN.textMuted }]}>
                             {searchQuery
                                 ? 'Try a different search term'
                                 : 'Create your first tier list and start ranking'}
@@ -410,7 +408,6 @@ const HomeScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     root: {
         flex: 1,
-        backgroundColor: DESIGN.bg,
     },
 
     // Header
@@ -421,9 +418,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: Platform.OS === 'android' ? 12 : 4,
         paddingBottom: 14,
-        backgroundColor: DESIGN.bg,
         borderBottomWidth: 1,
-        borderBottomColor: DESIGN.border,
     },
     headerLeft: {
         flexDirection: 'row',
@@ -434,10 +429,10 @@ const styles = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 11,
-        backgroundColor: DESIGN.accent,
+        backgroundColor: '#7C5CFC', // Static primary
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: DESIGN.accent,
+        shadowColor: '#7C5CFC',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.5,
         shadowRadius: 10,
@@ -450,13 +445,11 @@ const styles = StyleSheet.create({
         letterSpacing: -1,
     },
     appName: {
-        color: DESIGN.textPrimary,
         fontSize: 20,
         fontWeight: '800',
         letterSpacing: -0.5,
     },
     appTagline: {
-        color: DESIGN.textMuted,
         fontSize: 11,
         fontWeight: '600',
         marginTop: -2,
@@ -471,9 +464,7 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 10,
-        backgroundColor: DESIGN.surface,
         borderWidth: 1,
-        borderColor: DESIGN.border,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -481,10 +472,10 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 10,
-        backgroundColor: DESIGN.accent,
+        backgroundColor: '#7C5CFC',
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: DESIGN.accent,
+        shadowColor: '#7C5CFC',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.45,
         shadowRadius: 8,
@@ -498,22 +489,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 24,
-        backgroundColor: DESIGN.surface,
         borderBottomWidth: 1,
-        borderBottomColor: DESIGN.border,
     },
     statChip: {
         flex: 1,
         alignItems: 'center',
     },
     statValue: {
-        color: DESIGN.accent,
+        color: '#7C5CFC',
         fontSize: 20,
         fontWeight: '800',
         letterSpacing: -0.5,
     },
     statLabel: {
-        color: DESIGN.textMuted,
         fontSize: 11,
         fontWeight: '600',
         marginTop: 1,
@@ -523,7 +511,6 @@ const styles = StyleSheet.create({
     statDivider: {
         width: 1,
         height: 28,
-        backgroundColor: DESIGN.border,
     },
 
     // Search
@@ -535,17 +522,14 @@ const styles = StyleSheet.create({
     searchBox: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: DESIGN.surface,
         borderRadius: 12,
         paddingHorizontal: 14,
         height: 44,
         borderWidth: 1,
-        borderColor: DESIGN.border,
         gap: 10,
     },
     searchInput: {
         flex: 1,
-        color: DESIGN.textPrimary,
         fontSize: 15,
         fontWeight: '500',
     },
@@ -560,22 +544,18 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
     },
     sectionLabel: {
-        color: DESIGN.textSecondary,
         fontSize: 13,
         fontWeight: '700',
         textTransform: 'uppercase',
         letterSpacing: 1,
     },
     sectionCount: {
-        color: DESIGN.textMuted,
         fontSize: 13,
         fontWeight: '600',
-        backgroundColor: DESIGN.surface,
         paddingHorizontal: 8,
         paddingVertical: 2,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: DESIGN.border,
     },
 
     // List
@@ -586,27 +566,14 @@ const styles = StyleSheet.create({
 
     // Card
     card: {
-        backgroundColor: DESIGN.card,
         borderRadius: 16,
         marginBottom: 12,
         borderWidth: 1,
-        borderColor: DESIGN.cardBorder,
         overflow: 'hidden',
-        shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
         elevation: 5,
-    },
-    cardActive: {
-        borderColor: DESIGN.accent,
-        shadowColor: DESIGN.accent,
-        shadowOpacity: 0.4,
-    },
-    cardAccentBar: {
-        height: 3,
-        width: '100%',
-        opacity: 0.8,
     },
     cardInner: {
         padding: 16,
@@ -623,9 +590,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    cardIconEmoji: {
-        fontSize: 22,
-    },
     cardTitleBlock: {
         flex: 1,
     },
@@ -635,7 +599,6 @@ const styles = StyleSheet.create({
         gap: 6,
     },
     cardTitle: {
-        color: DESIGN.textPrimary,
         fontSize: 16,
         fontWeight: '700',
         letterSpacing: -0.3,
@@ -652,13 +615,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 4,
-        backgroundColor: DESIGN.pill,
         borderRadius: 6,
         paddingHorizontal: 7,
         paddingVertical: 3,
     },
     metaText: {
-        color: DESIGN.textMuted,
         fontSize: 11,
         fontWeight: '600',
     },
@@ -666,15 +627,9 @@ const styles = StyleSheet.create({
         width: 34,
         height: 34,
         borderRadius: 9,
-        backgroundColor: DESIGN.surface,
         borderWidth: 1,
-        borderColor: DESIGN.border,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    menuBtnActive: {
-        backgroundColor: DESIGN.accentSoft,
-        borderColor: DESIGN.accent,
     },
 
     // Tier preview
@@ -704,7 +659,6 @@ const styles = StyleSheet.create({
         marginTop: 14,
         paddingTop: 14,
         borderTopWidth: 1,
-        borderTopColor: DESIGN.cardBorder,
         gap: 8,
     },
     actionBtn: {
@@ -739,22 +693,18 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 24,
-        backgroundColor: DESIGN.surface,
         borderWidth: 1,
-        borderColor: DESIGN.border,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
     },
     emptyTitle: {
-        color: DESIGN.textPrimary,
         fontSize: 20,
         fontWeight: '700',
         marginBottom: 8,
         letterSpacing: -0.3,
     },
     emptyBody: {
-        color: DESIGN.textMuted,
         fontSize: 14,
         textAlign: 'center',
         lineHeight: 20,
@@ -765,11 +715,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
-        backgroundColor: DESIGN.accent,
+        backgroundColor: '#7C5CFC',
         paddingHorizontal: 24,
         paddingVertical: 13,
         borderRadius: 12,
-        shadowColor: DESIGN.accent,
+        shadowColor: '#7C5CFC',
         shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.45,
         shadowRadius: 12,

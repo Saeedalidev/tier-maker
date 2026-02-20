@@ -6,7 +6,7 @@ import tierReducer from './slices/tierSlice';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['tierLists'], // Only persist tierLists
+    whitelist: ['tierLists', 'theme'], // Persist tier lists and selected theme
 };
 
 const persistedReducer = persistReducer(persistConfig, tierReducer);

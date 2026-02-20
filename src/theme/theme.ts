@@ -1,33 +1,60 @@
 export const Colors = {
-    // Main Colors
+    // Shared Colors
     primary: '#6C48FF', // Vibrant Purple
     secondary: '#00D1FF', // Electric Cyan
-    accent: '#FF2E7E', // Neon Pink
+    accent: '#7C5CFC', // Design Token Accent
 
-    // Neutral Colors
-    background: '#0B0D11', // Rich Black
-    surface: '#151921', // Deep Blue-Gray
-    surfaceLight: '#1E2330',
-    border: '#252B38',
+    // Theme Specific Colors
+    dark: {
+        background: '#0A0A0F',
+        surface: '#111118',
+        card: '#16161F',
+        cardBorder: '#1E1E2E',
+        border: '#1A1A2A',
+        textPrimary: '#F0F0FA',
+        textSecondary: '#8585A0',
+        textMuted: '#45455A',
+        accentSoft: 'rgba(124, 92, 252, 0.15)',
+        accentGlow: 'rgba(124, 92, 252, 0.35)',
+    },
+    light: {
+        background: '#F7F7FB',
+        surface: '#FFFFFF',
+        card: '#FFFFFF',
+        cardBorder: '#E1E1E8',
+        border: '#EDEDF5',
+        textPrimary: '#1A1A2E',
+        textSecondary: '#62627A',
+        textMuted: '#9E9EBA',
+        accentSoft: 'rgba(124, 92, 252, 0.08)',
+        accentGlow: 'rgba(124, 92, 252, 0.2)',
+    }
+};
 
-    // Text
-    text: '#FFFFFF',
-    textSecondary: '#A0AEC0',
-    textMuted: '#718096',
-
-    // Feedback
-    error: '#FF4D4D',
-    success: '#00E676',
-    warning: '#FFD600',
-
-    // Tier Presets (Classic & Modern styles)
-    tierS: '#FF4136', // Bright Red
-    tierA: '#FF851B', // Vivid Orange
-    tierB: '#FFDC00', // Clear Yellow
-    tierC: '#2ECC40', // Deep Green
-    tierD: '#0074D9', // Royal Blue
-    tierE: '#B10DC9', // Purple
-    tierF: '#AAAAAA', // Silver/Gray
+export const getDesignTokens = (theme: 'dark' | 'light') => {
+    const t = Colors[theme];
+    return {
+        bg: t.background,
+        surface: t.surface,
+        card: t.card,
+        cardBorder: t.cardBorder,
+        accent: Colors.accent,
+        accentSoft: t.accentSoft,
+        accentGlow: t.accentGlow,
+        cyan: '#00D4FF',
+        cyanSoft: 'rgba(0, 212, 255, 0.12)',
+        green: '#00E676',
+        greenSoft: 'rgba(0, 230, 118, 0.12)',
+        red: '#FF4D6D',
+        redSoft: 'rgba(255, 77, 109, 0.12)',
+        amber: '#FFB300',
+        amberSoft: 'rgba(255, 179, 0, 0.12)',
+        textPrimary: t.textPrimary,
+        textSecondary: t.textSecondary,
+        textMuted: t.textMuted,
+        border: t.border,
+        pill: theme === 'dark' ? '#1A1A28' : '#F0F0F7',
+    };
 };
 
 export const Spacing = {
