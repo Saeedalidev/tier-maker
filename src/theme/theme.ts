@@ -1,8 +1,22 @@
+const basePalette = {
+    background: '#F7F7FB',
+    surface: '#FFFFFF',
+    surfaceLight: '#F3F3FD',
+    card: '#FFFFFF',
+    border: '#E1E1E8',
+    text: '#1A1A2E',
+    textSecondary: '#62627A',
+    textMuted: '#9E9EBA',
+    textInverse: '#FFFFFF',
+    error: '#FF4D6D',
+};
+
 export const Colors = {
     // Shared Colors
     primary: '#6C48FF', // Vibrant Purple
     secondary: '#00D1FF', // Electric Cyan
     accent: '#7C5CFC', // Design Token Accent
+    ...basePalette,
 
     // Theme Specific Colors
     dark: {

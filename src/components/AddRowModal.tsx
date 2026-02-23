@@ -14,6 +14,7 @@ import {
 import { Colors, Spacing, Shadows } from '../theme/theme';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ColorPicker from './ColorPicker';
 
 interface AddRowModalProps {
     visible: boolean;
@@ -21,21 +22,18 @@ interface AddRowModalProps {
     onSave: (label: string, color: string, imageUri?: string) => void;
 }
 
-const PRESET_COLORS = [
-    '#FF7F7F', '#FFBF7F', '#FFFF7F', '#BFFF7F', '#7FFF7F',
-    '#7FBFFF', '#7F7FFF', '#FF7FB3', '#C0C0C0', '#808080'
-];
+const DEFAULT_ROW_COLOR = '#FF7F7F';
 
 const AddRowModal = ({ visible, onClose, onSave }: AddRowModalProps) => {
     const [label, setLabel] = useState('');
-    const [color, setColor] = useState(PRESET_COLORS[0]);
+    const [color, setColor] = useState(DEFAULT_ROW_COLOR);
     const [labelImageUri, setLabelImageUri] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         if (!visible) {
             setLabel('');
             setLabelImageUri(undefined);
-            setColor(PRESET_COLORS[0]);
+            setColor(DEFAULT_ROW_COLOR);
         }
     }, [visible]);
 
@@ -76,15 +74,20 @@ const AddRowModal = ({ visible, onClose, onSave }: AddRowModalProps) => {
                         </TouchableOpacity>
                     </View>
 
-                    <ScrollView contentContainerStyle={styles.scrollContent}>
+                    <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
                         <View style={styles.imagePickerSection}>
                             {labelImageUri ? (
-                                <TouchableOpacity onPress={handlePickImage} style={styles.imagePreviewContainer}>
-                                    <Image source={{ uri: labelImageUri }} style={styles.imagePreview} />
-                                    <View style={styles.changeImageBadge}>
-                                        <Text style={styles.changeImageText}>Edit Image</Text>
-                                    </View>
-                                </TouchableOpacity>
+                                <View style={styles.imagePreviewWrapper}>
+                                    <TouchableOpacity onPress={handlePickImage} style={styles.imagePreviewContainer}>
+                                        <Image source={{ uri: labelImageUri }} style={styles.imagePreview} />
+                                        <View style={styles.changeImageBadge}>
+                                            <Text style={styles.changeImageText}>Edit Image</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => setLabelImageUri(undefined)} style={styles.removeImageLink}>
+                                        <Text style={styles.removeImageText}>Remove Image</Text>
+                                    </TouchableOpacity>
+                                </View>
                             ) : (
                                 <TouchableOpacity onPress={handlePickImage} style={styles.imagePlaceholder}>
                                     <Ionicons name="image-outline" size={28} color={Colors.textSecondary} />
@@ -95,33 +98,19 @@ const AddRowModal = ({ visible, onClose, onSave }: AddRowModalProps) => {
 
                         <Text style={styles.label}>Tier Label</Text>
                         <TextInput
-                            style={styles.input}
+                            style={[styles.input, labelImageUri && styles.disabledInput]}
                             placeholder="e.g. S, A, E, F..."
                             placeholderTextColor={Colors.textMuted}
                             value={label}
                             onChangeText={setLabel}
                             maxLength={10}
+                            editable={!labelImageUri}
                         />
 
                         <Text style={[styles.label, labelImageUri && { opacity: 0.5 }]}>
                             Row Color {labelImageUri && "(Disabled with Image)"}
                         </Text>
-                        <View
-                            style={[styles.colorGrid, labelImageUri && { opacity: 0.3 }]}
-                            pointerEvents={labelImageUri ? 'none' : 'auto'}
-                        >
-                            {PRESET_COLORS.map(c => (
-                                <TouchableOpacity
-                                    key={c}
-                                    style={[
-                                        styles.colorOption,
-                                        { backgroundColor: c },
-                                        color === c && styles.colorSelected
-                                    ]}
-                                    onPress={() => setColor(c)}
-                                />
-                            ))}
-                        </View>
+                        <ColorPicker value={color} onChange={setColor} disabled={!!labelImageUri} />
                     </ScrollView>
 
                     <TouchableOpacity
@@ -150,7 +139,9 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.surface,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        padding: Spacing.m,
+        paddingHorizontal: Spacing.l,
+        paddingTop: Spacing.l,
+        paddingBottom: Spacing.xl,
         maxHeight: '100%',
         ...Shadows.soft,
     },
@@ -180,7 +171,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     scrollContent: {
-        paddingBottom: Spacing.xl,
+        paddingBottom: Spacing.xxl,
     },
     imagePickerSection: {
         alignItems: 'center',
@@ -210,6 +201,10 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         ...Shadows.soft,
     },
+    imagePreviewWrapper: {
+        alignItems: 'center',
+        gap: 10,
+    },
     imagePreview: {
         width: '100%',
         height: '100%',
@@ -227,6 +222,17 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 10,
         fontWeight: 'bold',
+    },
+    removeImageLink: {
+        paddingVertical: 4,
+        paddingHorizontal: 8,
+    },
+    removeImageText: {
+        color: Colors.error,
+        fontSize: 12,
+        fontWeight: '700',
+        textTransform: 'uppercase',
+        letterSpacing: 1,
     },
     label: {
         fontSize: 14,
@@ -246,29 +252,16 @@ const styles = StyleSheet.create({
         borderColor: Colors.border,
         marginBottom: Spacing.l,
     },
-    colorGrid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-    },
-    colorOption: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
-        margin: 6,
-        borderWidth: 3,
-        borderColor: 'transparent',
-    },
-    colorSelected: {
-        borderColor: 'white',
-        transform: [{ scale: 1.1 }],
+    disabledInput: {
+        opacity: 0.5,
     },
     saveButton: {
         backgroundColor: Colors.primary,
         borderRadius: 16,
         padding: Spacing.m,
         alignItems: 'center',
-        marginTop: Spacing.m,
+        marginTop: Spacing.l,
+        marginBottom: Spacing.s,
         ...Shadows.soft,
     },
     disabledSaveButton: {

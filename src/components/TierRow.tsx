@@ -64,10 +64,12 @@ const styles = StyleSheet.create({
     },
     labelImage: {
         width: 90,
-        height: 90,
+        // height: '',
+        flex: 1,
+        // aspectRatio: 1,
         borderTopLeftRadius: 12,
         borderBottomLeftRadius: 12,
-        resizeMode: 'cover',
+        resizeMode: 'stretch',
     },
     labelText: {
         color: '#000',

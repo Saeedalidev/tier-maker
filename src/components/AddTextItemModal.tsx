@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Colors, Spacing, Shadows } from '../theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ColorPicker from './ColorPicker';
 
 interface AddTextItemModalProps {
     visible: boolean;
@@ -19,20 +20,16 @@ interface AddTextItemModalProps {
     onSave: (text: string, color: string) => void;
 }
 
-const PRESET_COLORS = [
-    '#6C48FF', '#00D1FF', '#FF2E7E', '#00E676', '#FFD600',
-    '#FF7F7F', '#FFBF7F', '#FFFF7F', '#BFFF7F', '#7FFF7F',
-    '#7FBFFF', '#7F7FFF', '#FF7FB3', '#FFFFFF'
-];
+const DEFAULT_TEXT_COLOR = '#6C48FF';
 
 const AddTextItemModal = ({ visible, onClose, onSave }: AddTextItemModalProps) => {
     const [text, setText] = useState('');
-    const [color, setColor] = useState(PRESET_COLORS[0]);
+    const [color, setColor] = useState(DEFAULT_TEXT_COLOR);
 
     useEffect(() => {
         if (!visible) {
             setText('');
-            setColor(PRESET_COLORS[0]);
+            setColor(DEFAULT_TEXT_COLOR);
         }
     }, [visible]);
 
@@ -82,19 +79,7 @@ const AddTextItemModal = ({ visible, onClose, onSave }: AddTextItemModalProps) =
                         />
 
                         <Text style={styles.label}>Box Color</Text>
-                        <View style={styles.colorGrid}>
-                            {PRESET_COLORS.map(c => (
-                                <TouchableOpacity
-                                    key={c}
-                                    style={[
-                                        styles.colorOption,
-                                        { backgroundColor: c },
-                                        color === c && styles.colorSelected
-                                    ]}
-                                    onPress={() => setColor(c)}
-                                />
-                            ))}
-                        </View>
+                        <ColorPicker value={color} onChange={setColor} />
                     </ScrollView>
 
                     <TouchableOpacity
@@ -190,23 +175,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.border,
         marginBottom: Spacing.l,
-    },
-    colorGrid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-    },
-    colorOption: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        margin: 6,
-        borderWidth: 3,
-        borderColor: 'transparent',
-    },
-    colorSelected: {
-        borderColor: 'white',
-        transform: [{ scale: 1.1 }],
     },
     saveButton: {
         backgroundColor: Colors.primary,

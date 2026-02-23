@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Modal, TextInput, TouchableOpacity, Image, Scro
 import { Colors, Spacing, Shadows } from '../theme/theme';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ColorPicker from './ColorPicker';
 
 interface TierEditModalProps {
     visible: boolean;
@@ -12,11 +13,6 @@ interface TierEditModalProps {
     initialColor: string;
     initialLabelImage?: string;
 }
-
-const PRESET_COLORS = [
-    '#FF7F7F', '#FFBF7F', '#FFFF7F', '#BFFF7F', '#7FFF7F',
-    '#7FBFFF', '#7F7FFF', '#FF7FB3', '#C0C0C0', '#808080'
-];
 
 const TierEditModal = ({ visible, onClose, onSave, initialLabel, initialColor, initialLabelImage }: TierEditModalProps) => {
     const [label, setLabel] = useState(initialLabel);
@@ -75,33 +71,19 @@ const TierEditModal = ({ visible, onClose, onSave, initialLabel, initialColor, i
 
                         <Text style={styles.label}>Tier Label</Text>
                         <TextInput
-                            style={styles.input}
+                            style={[styles.input, labelImageUri && styles.disabledInput]}
                             value={label}
                             onChangeText={setLabel}
                             maxLength={10}
                             placeholder="e.g. S, A, Best..."
                             placeholderTextColor={Colors.textSecondary}
+                            editable={!labelImageUri}
                         />
 
                         <Text style={[styles.label, labelImageUri && { opacity: 0.5 }]}>
                             Select Color {labelImageUri && "(Disabled with Image)"}
                         </Text>
-                        <View
-                            style={[styles.colorGrid, labelImageUri && { opacity: 0.3 }]}
-                            pointerEvents={labelImageUri ? 'none' : 'auto'}
-                        >
-                            {PRESET_COLORS.map(c => (
-                                <TouchableOpacity
-                                    key={c}
-                                    style={[
-                                        styles.colorOption,
-                                        { backgroundColor: c },
-                                        color === c && styles.colorSelected
-                                    ]}
-                                    onPress={() => setColor(c)}
-                                />
-                            ))}
-                        </View>
+                        <ColorPicker value={color} onChange={setColor} disabled={!!labelImageUri} />
                     </ScrollView>
 
                     <View style={styles.actions}>
@@ -163,6 +145,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
     },
+    disabledInput: {
+        opacity: 0.5,
+    },
     scrollContent: {
         paddingBottom: Spacing.m,
     },
@@ -220,24 +205,6 @@ const styles = StyleSheet.create({
         color: Colors.error || '#FF5252',
         fontSize: 12,
         fontWeight: 'bold',
-    },
-    colorGrid: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        marginBottom: Spacing.xl,
-    },
-    colorOption: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
-        margin: 8,
-        borderWidth: 3,
-        borderColor: 'transparent',
-    },
-    colorSelected: {
-        borderColor: 'white',
-        transform: [{ scale: 1.15 }],
     },
     actions: {
         flexDirection: 'row',
