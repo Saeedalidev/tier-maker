@@ -13,9 +13,9 @@ const basePalette = {
 
 export const Colors = {
     // Shared Colors
-    primary: '#6C48FF', // Vibrant Purple
-    secondary: '#00D1FF', // Electric Cyan
-    accent: '#7C5CFC', // Design Token Accent
+    primary: '#00B2FF', // Vibrant Aqua
+    secondary: '#00E8FF', // Bright Cyan
+    accent: '#00D1FF', // Electric Accent
     ...basePalette,
 
     // Theme Specific Colors
@@ -28,8 +28,8 @@ export const Colors = {
         textPrimary: '#F0F0FA',
         textSecondary: '#8585A0',
         textMuted: '#45455A',
-        accentSoft: 'rgba(124, 92, 252, 0.15)',
-        accentGlow: 'rgba(124, 92, 252, 0.35)',
+        accentSoft: 'rgba(0, 209, 255, 0.15)',
+        accentGlow: 'rgba(0, 209, 255, 0.35)',
     },
     light: {
         background: '#F7F7FB',
@@ -40,8 +40,8 @@ export const Colors = {
         textPrimary: '#1A1A2E',
         textSecondary: '#62627A',
         textMuted: '#9E9EBA',
-        accentSoft: 'rgba(124, 92, 252, 0.08)',
-        accentGlow: 'rgba(124, 92, 252, 0.2)',
+        accentSoft: 'rgba(0, 209, 255, 0.08)',
+        accentGlow: 'rgba(0, 209, 255, 0.2)',
     }
 };
 

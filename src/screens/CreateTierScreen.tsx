@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import {
     View,
     Text,
@@ -20,6 +20,7 @@ import {
     moveItem,
     updateTitle,
     deleteItem,
+    deleteRow,
     clearList,
     reorderRows,
     reorderUnrankedItems,
@@ -31,7 +32,7 @@ import { RootState } from '../store/store';
 import TierRowComp from '../components/TierRow';
 import ImageItem from '../components/ImageItem';
 import TierEditModal from '../components/TierEditModal';
-import { exportTierList } from '../utils/exportUtils';
+import { exportTierList, ExportIntent } from '../utils/exportUtils';
 import ViewShot from 'react-native-view-shot';
 import DraggableFlatList, { ScaleDecorator, RenderItemParams } from 'react-native-draggable-flatlist';
 import AddRowModal from '../components/AddRowModal';
@@ -48,6 +49,11 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { getDesignTokens } from '../theme/theme';
+import { getStatusBarConfig } from '../utils/statusBar';
+import AdConfirmDialog from '../components/AdConfirmDialog';
+import { useRewardedAd } from '../hooks/useRewardedAd';
+import { SHOW_ADS } from '../services/admobService';
+import SmartBannerAd from '../components/SmartBannerAd';
 
 const { width } = Dimensions.get('window');
 
@@ -60,6 +66,7 @@ const CreateTierScreen = ({ navigation, route }: any) => {
     const theme = useSelector((state: RootState) => state.tier.theme);
     const isDarkMode = theme === 'dark';
     const D = getDesignTokens(theme);
+    const { barStyle, backgroundColor: statusBarBg } = getStatusBarConfig(theme);
 
     const currentList = useSelector((state: RootState) =>
         state.tier.tierLists.find(l => l.id === id)
@@ -73,6 +80,97 @@ const CreateTierScreen = ({ navigation, route }: any) => {
     const [showAddRow, setShowAddRow] = useState(false);
     const [showAddText, setShowAddText] = useState(false);
     const [isTitleFocused, setIsTitleFocused] = useState(false);
+    const [isAdDialogVisible, setAdDialogVisible] = useState(false);
+    const [adError, setAdError] = useState<string | null>(null);
+    const pendingIntentRef = useRef<ExportIntent | null>(null);
+    const rewardEarnedRef = useRef(false);
+
+    const performExport = useCallback((intent: ExportIntent) => {
+        const exportTitle = title || currentList?.title;
+        exportTierList(viewRef, { intent, title: exportTitle });
+    }, [title, currentList?.title]);
+
+    const {
+        isAdLoaded,
+        isAdLoading,
+        showAd,
+        loadAd,
+    } = useRewardedAd({
+        onRewarded: () => {
+            rewardEarnedRef.current = true;
+            setAdError(null);
+        },
+        onAdClosed: () => {
+            setAdDialogVisible(false);
+            const pendingIntent = pendingIntentRef.current;
+            pendingIntentRef.current = null;
+
+            if (rewardEarnedRef.current && pendingIntent) {
+                rewardEarnedRef.current = false;
+                setTimeout(() => performExport(pendingIntent), 250);
+            } else {
+                rewardEarnedRef.current = false;
+            }
+        },
+        onError: (error) => {
+            console.warn('[RewardedAd] Failed to load/show ad:', error);
+            setAdError(error.message || 'Unable to load ad. You can still continue without it.');
+        },
+    });
+
+    const requestExportWithAd = useCallback((intent: ExportIntent) => {
+        pendingIntentRef.current = intent;
+        rewardEarnedRef.current = false;
+        setAdError(null);
+
+        if (SHOW_ADS) {
+            setAdDialogVisible(true);
+            if (!isAdLoaded && !isAdLoading) {
+                loadAd();
+            }
+        } else {
+            performExport(intent);
+        }
+    }, [isAdLoaded, isAdLoading, loadAd, performExport]);
+
+    const handleAdConfirm = useCallback(() => {
+        const attemptShow = async () => {
+            if (isAdLoaded) {
+                showAd();
+                return;
+            }
+
+            try {
+                await Promise.resolve(loadAd());
+                showAd();
+            } catch {
+                // loadAd already surfaced the error through onError handler
+            }
+        };
+
+        attemptShow();
+    }, [isAdLoaded, showAd, loadAd]);
+
+    const handleAdCancel = useCallback(() => {
+        setAdDialogVisible(false);
+        setAdError(null);
+        pendingIntentRef.current = null;
+        rewardEarnedRef.current = false;
+    }, []);
+
+    const handleExportAnyway = useCallback(() => {
+        setAdDialogVisible(false);
+        const pendingIntent = pendingIntentRef.current;
+        pendingIntentRef.current = null;
+        rewardEarnedRef.current = false;
+        if (pendingIntent) {
+            setTimeout(() => performExport(pendingIntent), 200);
+        }
+    }, [performExport]);
+
+    const handleShareExport = useCallback(() => {
+        requestExportWithAd('share');
+    }, [requestExportWithAd]);
 
     // Drag state
     const rowLayouts = useSharedValue<{ id: string; y: number; height: number }[]>([]);
@@ -86,6 +184,22 @@ const CreateTierScreen = ({ navigation, route }: any) => {
     const activeItemShared = useSharedValue<string | null>(null);
     const [activeDragItem, setActiveDragItem] = useState<TierItem | null>(null);
     const listHeight = useSharedValue(0);
+
+    // Delete zone state
+    const deleteZoneLayout = useSharedValue({ x: 0, y: 0, width: 0, height: 0 });
+    const isOverDeleteZone = useSharedValue(false);
+
+    useEffect(() => {
+        const intent: ExportIntent | undefined = route.params?.autoExportIntent;
+        if (!intent || !currentList) return;
+
+        const timer = setTimeout(() => {
+            requestExportWithAd(intent);
+            navigation.setParams({ autoExportIntent: undefined });
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [route.params?.autoExportIntent, currentList, navigation, requestExportWithAd]);
 
     const styles = useMemo(() => StyleSheet.create({
         root: {
@@ -235,7 +349,7 @@ const CreateTierScreen = ({ navigation, route }: any) => {
             top: 0, left: 0, right: 0, bottom: 0,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'rgba(124, 92, 252, 0.08)',
+            backgroundColor: 'rgba(0, 209, 255, 0.08)',
             zIndex: 10,
         },
         dropTarget: {
@@ -280,8 +394,10 @@ const CreateTierScreen = ({ navigation, route }: any) => {
 
         // Tray
         tray: {
-            height: 186,
+            height: 200,
             backgroundColor: D.surface,
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
             borderTopWidth: 1,
             borderTopColor: D.border,
             paddingTop: 14,
@@ -343,7 +459,7 @@ const CreateTierScreen = ({ navigation, route }: any) => {
         toolBtnLabel: {
             fontSize: 12,
             fontWeight: '700',
-            letterSpacing: 0.2,
+            letterSpacing: 0.5,
         },
         trayItems: {
             flex: 1,
@@ -352,23 +468,60 @@ const CreateTierScreen = ({ navigation, route }: any) => {
             alignItems: 'center',
             paddingHorizontal: 4,
         },
+        trayScrollEmpty: {
+            flexGrow: 1,
+            justifyContent: 'center',
+        },
         trayItemWrap: {
             marginHorizontal: 4,
         },
 
         // Empty tray
         emptyTray: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingVertical: 24,
+            width: '100%',
+            alignSelf: 'stretch',
+        },
+        emptyTrayBox: {
+            width: 96,
+            height: 96,
+            borderRadius: 24,
+            borderWidth: 1,
+            borderColor: D.border,
+            // backgroundColor: D.surface,
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+
+        // Delete Zone
+        deleteZone: {
+            position: 'absolute',
+            alignSelf: 'center',
+            marginTop: 40,
+            height: 48,
+            width: 180,
+            borderRadius: 24,
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 10,
-            paddingHorizontal: 16,
-            width: 300,
+            justifyContent: 'center',
+            gap: 8,
+            zIndex: 9999,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.25,
+            shadowRadius: 10,
+            elevation: 10,
+            borderWidth: 1,
+            borderColor: 'rgba(255,255,255,0.15)',
         },
-        emptyTrayText: {
-            color: D.textMuted,
+        deleteZoneText: {
+            color: '#fff',
             fontSize: 13,
-            fontWeight: '500',
-            flexShrink: 1,
+            fontWeight: '700',
+            letterSpacing: 0.2,
         },
     }), [D]);
 
@@ -452,17 +605,25 @@ const CreateTierScreen = ({ navigation, route }: any) => {
         ]);
     };
 
-    const handleDrop = (itemId: string, fromRowId: string | 'unranked', toRowId: string | 'unranked') => {
-        if (!itemId || !toRowId || fromRowId === toRowId) {
+    const handleDrop = (itemId: string, fromRowId: string | 'unranked', toRowId: string | 'unranked' | 'delete', targetIndex?: number) => {
+        if (!itemId || !toRowId) {
             isDragging.value = false;
+            isOverDeleteZone.value = false;
             activeItemShared.value = null;
             setActiveDragItem(null);
             setHoveringRowId(null);
             return;
         }
 
-        dispatch(moveItem({ itemId, fromRowId, toRowId }));
+        if (toRowId === 'delete') {
+            dispatch(deleteItem({ itemId, rowId: fromRowId }));
+            if (selectedItem?.id === itemId) setSelectedItem(null);
+        } else {
+            dispatch(moveItem({ itemId, fromRowId, toRowId, targetIndex }));
+        }
+
         isDragging.value = false;
+        isOverDeleteZone.value = false;
         activeItemShared.value = null;
         setActiveDragItem(null);
         setHoveringRowId(null);
@@ -489,6 +650,13 @@ const CreateTierScreen = ({ navigation, route }: any) => {
         dispatch(updateTitle(text));
     };
 
+    const handleDeleteRow = () => {
+        if (editingRow) {
+            dispatch(deleteRow(editingRow.id));
+            setEditingRow(null);
+        }
+    };
+
     const handleClearAll = () => {
         Alert.alert('Clear List', 'Move all items back to the collection?', [
             { text: 'Cancel', style: 'cancel' },
@@ -506,29 +674,42 @@ const CreateTierScreen = ({ navigation, route }: any) => {
         rowLayouts.value = currentLayouts;
     };
 
-    const findTargetRow = (absoluteY: number) => {
+    const findTargetRow = (absoluteX: number, absoluteY: number) => {
         'worklet';
+
+        // Check Delete Zone (more generous hit area when dragging)
+        if (isDragging.value && absoluteY < 100 && absoluteX > width / 2 - 100 && absoluteX < width / 2 + 100) {
+            return { id: 'delete' as const, index: 0 };
+        }
+
         const measurement = measure(listContainerAnimatedRef);
         const pageY = measurement && measurement.pageY > 0 ? measurement.pageY : listAbsoluteY.value;
         const pageH = measurement && measurement.height > 0 ? measurement.height : listHeight.value;
 
-        if (pageY <= 0) return null;
+        if (pageY <= 0) return { id: null, index: 0 };
 
         // If dropped below the list area, assume it's the tray
-        if (absoluteY > pageY + pageH) return 'unranked';
+        if (absoluteY > pageY + pageH) return { id: 'unranked' as const, index: 0 };
 
         const yInContent = absoluteY - pageY + scrollOffset.value;
         const layouts = rowLayouts.value;
         const order = rowOrder.value;
         let currentY = 0;
+
         for (let i = 0; i < order.length; i++) {
             const rowId = order[i];
             const layout = layouts.find(l => l.id === rowId);
             const height = layout ? layout.height : 90;
-            if (yInContent >= currentY && yInContent <= currentY + height) return rowId;
+            if (yInContent >= currentY && yInContent <= currentY + height) {
+                // Calculate horizontal index
+                const xInRow = absoluteX - 98; // subtract label width (90) and padding (8)
+                const itemWidth = 84; // roughly 80 size + margin/border
+                const targetIndex = Math.max(0, Math.floor(xInRow / itemWidth));
+                return { id: rowId, index: targetIndex };
+            }
             currentY += height + 2;
         }
-        return null;
+        return { id: null, index: 0 };
     };
 
     const dragStyle = useAnimatedStyle(() => ({
@@ -546,16 +727,39 @@ const CreateTierScreen = ({ navigation, route }: any) => {
         opacity: withSpring(isDragging.value ? 1 : 0),
     }));
 
+    const deleteZoneStyle = useAnimatedStyle(() => ({
+        transform: [
+            { translateY: withSpring(isDragging.value ? 20 : -100) },
+            { scale: withSpring(isOverDeleteZone.value ? 1.1 : 1) },
+        ],
+        opacity: withSpring(isDragging.value ? 1 : 0),
+        backgroundColor: isOverDeleteZone.value ? D.red : 'rgba(0,0,0,0.6)',
+    }));
+
     const totalItems = (currentList?.rows || []).reduce((a, r) => a + r.items.length, 0);
     const unrankedCount = currentList?.unrankedItems?.length || 0;
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <SafeAreaView style={styles.root}>
-                <StatusBar barStyle="light-content" backgroundColor={D.bg} />
+            {/* ── Delete Zone ── */}
+            <Animated.View
+                style={[styles.deleteZone, deleteZoneStyle]}
+                onLayout={(e) => {
+                    const { x, y, width: w, height: h } = e.nativeEvent.layout;
+                    // Since it's absolute at the top of the GestureHandlerRootView, this is roughly absolute.
+                    deleteZoneLayout.value = { x, y, width: w, height: h };
+                }}
+            >
+                <Ionicons name="trash-outline" size={20} color="#fff" />
+                <Text style={styles.deleteZoneText}>Drop to Delete</Text>
+            </Animated.View>
 
-                {/* ── Header ── */}
-                <View style={styles.header}>
+            <SafeAreaView style={styles.root}>
+                <StatusBar barStyle={barStyle} backgroundColor={statusBarBg} />
+
+                <View style={{ flex: 1 }}>
+                    {/* ── Header ── */}
+                    <View style={styles.header}>
                     <TouchableOpacity
                         style={styles.backBtn}
                         onPress={() => navigation.goBack()}
@@ -583,7 +787,7 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.headerBtn}
-                            onPress={() => exportTierList(viewRef)}
+                            onPress={handleShareExport}
                         >
                             <Ionicons name="share-outline" size={18} color={D.textSecondary} />
                         </TouchableOpacity>
@@ -591,10 +795,10 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                             <Text style={styles.doneBtnText}>Done</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
+                    </View>
 
-                {/* ── Stats bar ── */}
-                <View style={styles.statsBar}>
+                    {/* ── Stats bar ── */}
+                    <View style={styles.statsBar}>
                     <View style={styles.statItem}>
                         <View style={[styles.statDot, { backgroundColor: D.accent }]} />
                         <Text style={styles.statBarText}>{currentList?.rows?.length || 0} tiers</Text>
@@ -609,10 +813,10 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                         <View style={[styles.statDot, { backgroundColor: D.amber }]} />
                         <Text style={styles.statBarText}>{unrankedCount} pending</Text>
                     </View>
-                </View>
+                    </View>
 
-                {/* ── Ranking area ── */}
-                <ViewShot
+                    {/* ── Ranking area ── */}
+                    <ViewShot
                     ref={viewRef}
                     options={{ format: 'png', quality: 0.9 }}
                     style={styles.captureArea}
@@ -667,12 +871,13 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                                                             isDragging.value = true;
                                                             dragX.value = e.absoluteX;
                                                             dragY.value = e.absoluteY;
-                                                            const targetId = findTargetRow(e.absoluteY);
-                                                            if (targetId !== hoveringRowId) runOnJS(setHoveringRowId)(targetId);
+                                                            const target = findTargetRow(e.absoluteX, e.absoluteY);
+                                                            isOverDeleteZone.value = target.id === 'delete';
+                                                            if (target.id !== hoveringRowId) runOnJS(setHoveringRowId)(target.id);
                                                         })
                                                         .onEnd((e) => {
-                                                            const targetId = findTargetRow(e.absoluteY);
-                                                            runOnJS(handleDrop)(img.id, item.id, targetId || item.id);
+                                                            const target = findTargetRow(e.absoluteX, e.absoluteY);
+                                                            runOnJS(handleDrop)(img.id, item.id, target.id || item.id, target.index);
                                                         })}
                                                 >
                                                     <View>
@@ -710,10 +915,10 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                             }
                         />
                     </Animated.View>
-                </ViewShot>
+                    </ViewShot>
 
-                {/* ── Tray ── */}
-                <View style={styles.tray}>
+                    {/* ── Tray ── */}
+                    <View style={styles.tray}>
                     {/* Tray header */}
                     <View style={styles.trayHeader}>
                         <View style={styles.trayLabelWrap}>
@@ -759,7 +964,10 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                             data={currentList?.unrankedItems || []}
                             keyExtractor={(item) => item.id}
                             onDragEnd={({ data }) => dispatch(reorderUnrankedItems({ listId: id, items: data }))}
-                            contentContainerStyle={styles.trayScroll}
+                            contentContainerStyle={[
+                                styles.trayScroll,
+                                ((currentList?.unrankedItems?.length ?? 0) === 0) && styles.trayScrollEmpty,
+                            ]}
                             renderItem={({ item }: RenderItemParams<TierItem>) => (
                                 <GestureDetector
                                     gesture={Gesture.Pan()
@@ -775,12 +983,13 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                                             isDragging.value = true;
                                             dragX.value = e.absoluteX;
                                             dragY.value = e.absoluteY;
-                                            const targetId = findTargetRow(e.absoluteY);
-                                            if (targetId !== hoveringRowId) runOnJS(setHoveringRowId)(targetId);
+                                            const target = findTargetRow(e.absoluteX, e.absoluteY);
+                                            isOverDeleteZone.value = target.id === 'delete';
+                                            if (target.id !== hoveringRowId) runOnJS(setHoveringRowId)(target.id);
                                         })
                                         .onEnd((e) => {
-                                            const targetId = findTargetRow(e.absoluteY);
-                                            runOnJS(handleDrop)(item.id, 'unranked', targetId || 'unranked');
+                                            const target = findTargetRow(e.absoluteX, e.absoluteY);
+                                            runOnJS(handleDrop)(item.id, 'unranked', target.id || 'unranked', target.index);
                                         })}
                                 >
                                     <View style={styles.trayItemWrap}>
@@ -796,13 +1005,17 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                             )}
                             ListEmptyComponent={
                                 <View style={styles.emptyTray}>
-                                    <Ionicons name="cloud-upload-outline" size={22} color={D.textMuted} />
-                                    <Text style={styles.emptyTrayText}>Add images or text to start ranking</Text>
+                                    <View style={styles.emptyTrayBox}>
+                                        <Ionicons name="cloud-upload-outline" size={36} color={D.textMuted} />
+                                    </View>
                                 </View>
                             }
                         />
                     </View>
+                    </View>
                 </View>
+
+                <SmartBannerAd />
 
                 {/* ── Modals ── */}
                 <AddRowModal visible={showAddRow} onClose={() => setShowAddRow(false)} onSave={handleAddRow} />
@@ -815,9 +1028,20 @@ const CreateTierScreen = ({ navigation, route }: any) => {
                         initialLabelImage={editingRow.labelImageUri}
                         onClose={() => setEditingRow(null)}
                         onSave={handleSaveRow}
+                        onDelete={handleDeleteRow}
                     />
                 )}
             </SafeAreaView>
+
+            <AdConfirmDialog
+                visible={isAdDialogVisible}
+                onConfirm={handleAdConfirm}
+                onCancel={handleAdCancel}
+                isLoading={isAdLoading}
+                hasError={!!adError}
+                errorMessage={adError || undefined}
+                onExportAnyway={handleExportAnyway}
+            />
 
             {/* Drag preview */}
             <Animated.View style={dragStyle} pointerEvents="none">

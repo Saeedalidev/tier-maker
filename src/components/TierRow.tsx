@@ -40,7 +40,7 @@ const TierRowComp = ({ label, color, labelImageUri, onLabelPress, onLabelLongPre
                     <Text style={styles.labelText} numberOfLines={2}>{label}</Text>
                 )}
             </TouchableOpacity>
-            <View style={[styles.itemsContainer, { backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)' }]}>
+            <View style={[styles.itemsContainer, { backgroundColor: '#cccccc' }]}>
                 <View style={styles.itemsWrapper}>
                     {children}
                 </View>
@@ -72,9 +72,9 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
     },
     labelText: {
-        color: '#000',
-        fontWeight: '900',
-        fontSize: 20,
+        color: '#2e2e2e',
+        fontWeight: '600',
+        fontSize: 25,
         textAlign: 'center',
         textTransform: 'uppercase',
     },

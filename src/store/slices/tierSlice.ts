@@ -35,11 +35,11 @@ const initialState: TierState = {
 };
 
 const defaultRows: TierRow[] = [
-    { id: 'S', label: 'S', color: '#FF7F7F', items: [] },
-    { id: 'A', label: 'A', color: '#FFBF7F', items: [] },
-    { id: 'B', label: 'B', color: '#FFFF7F', items: [] },
-    { id: 'C', label: 'C', color: '#BFFF7F', items: [] },
-    { id: 'D', label: 'D', color: '#7FFF7F', items: [] },
+    { id: 'S', label: 'S', color: '#E52222', items: [] },
+    { id: 'A', label: 'A', color: '#F5952C', items: [] },
+    { id: 'B', label: 'B', color: '#CFCF1F', items: [] },
+    { id: 'C', label: 'C', color: '#7FDB23', items: [] },
+    { id: 'D', label: 'D', color: '#5C65E0', items: [] },
 ];
 
 export const tierSlice = createSlice({
@@ -132,6 +132,19 @@ export const tierSlice = createSlice({
                 }
             }
         },
+        deleteRow: (state, action: PayloadAction<string>) => {
+            const currentList = state.tierLists.find(l => l.id === state.currentTierListId);
+            if (currentList) {
+                const rowIndex = currentList.rows.findIndex(r => r.id === action.payload);
+                if (rowIndex > -1) {
+                    const row = currentList.rows[rowIndex];
+                    // Move items to unranked
+                    currentList.unrankedItems.push(...row.items);
+                    // Remove row
+                    currentList.rows.splice(rowIndex, 1);
+                }
+            }
+        },
         updateRow: (state, action: PayloadAction<{ rowId: string; label: string; color: string; labelImageUri?: string }>) => {
             const currentList = state.tierLists.find(l => l.id === state.currentTierListId);
             if (currentList) {
@@ -211,6 +224,7 @@ export const {
     setCurrentList,
     addItemToUnranked,
     deleteItem,
+    deleteRow,
     moveItem,
     updateRow,
     addRow,

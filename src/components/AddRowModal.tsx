@@ -15,6 +15,8 @@ import { Colors, Spacing, Shadows } from '../theme/theme';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ColorPicker from './ColorPicker';
+import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring, runOnJS } from 'react-native-reanimated';
 
 interface AddRowModalProps {
     visible: boolean;
@@ -28,14 +30,35 @@ const AddRowModal = ({ visible, onClose, onSave }: AddRowModalProps) => {
     const [label, setLabel] = useState('');
     const [color, setColor] = useState(DEFAULT_ROW_COLOR);
     const [labelImageUri, setLabelImageUri] = useState<string | undefined>(undefined);
+    const translateY = useSharedValue(0);
+
+    const gesture = Gesture.Pan()
+        .onUpdate((event) => {
+            if (event.translationY > 0) {
+                translateY.value = event.translationY;
+            }
+        })
+        .onEnd((event) => {
+            if (event.translationY > 100 || event.velocityY > 500) {
+                runOnJS(onClose)();
+            } else {
+                translateY.value = withSpring(0);
+            }
+        });
+
+    const animatedStyle = useAnimatedStyle(() => ({
+        transform: [{ translateY: translateY.value }],
+    }));
 
     useEffect(() => {
         if (!visible) {
             setLabel('');
             setLabelImageUri(undefined);
             setColor(DEFAULT_ROW_COLOR);
+        } else {
+            translateY.value = withSpring(0);
         }
-    }, [visible]);
+    }, [visible, translateY]);
 
     const handlePickImage = async () => {
         const result = await launchImageLibrary({
@@ -64,86 +87,99 @@ const AddRowModal = ({ visible, onClose, onSave }: AddRowModalProps) => {
         >
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={styles.modalOverlay}
+                style={styles.overlay}
             >
-                <View style={styles.modalContent}>
-                    <View style={styles.header}>
-                        <Text style={styles.title}>Add New Tier Row</Text>
-                        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                            <Ionicons name="close" size={20} color={Colors.textMuted} />
-                        </TouchableOpacity>
-                    </View>
-
-                    <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-                        <View style={styles.imagePickerSection}>
-                            {labelImageUri ? (
-                                <View style={styles.imagePreviewWrapper}>
-                                    <TouchableOpacity onPress={handlePickImage} style={styles.imagePreviewContainer}>
-                                        <Image source={{ uri: labelImageUri }} style={styles.imagePreview} />
-                                        <View style={styles.changeImageBadge}>
-                                            <Text style={styles.changeImageText}>Edit Image</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setLabelImageUri(undefined)} style={styles.removeImageLink}>
-                                        <Text style={styles.removeImageText}>Remove Image</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            ) : (
-                                <TouchableOpacity onPress={handlePickImage} style={styles.imagePlaceholder}>
-                                    <Ionicons name="image-outline" size={28} color={Colors.textSecondary} />
-                                    <Text style={styles.imagePlaceholderText}>Row Image (Optional)</Text>
-                                </TouchableOpacity>
-                            )}
+                <GestureDetector gesture={gesture}>
+                    <Animated.View style={[styles.sheet, animatedStyle]}>
+                        <View style={styles.dragHandle} />
+                        <View style={styles.header}>
+                            <Text style={styles.title}>Add New Tier Row</Text>
+                            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                                <Ionicons name="close" size={20} color={Colors.textMuted} />
+                            </TouchableOpacity>
                         </View>
 
-                        <Text style={styles.label}>Tier Label</Text>
-                        <TextInput
-                            style={[styles.input, labelImageUri && styles.disabledInput]}
-                            placeholder="e.g. S, A, E, F..."
-                            placeholderTextColor={Colors.textMuted}
-                            value={label}
-                            onChangeText={setLabel}
-                            maxLength={10}
-                            editable={!labelImageUri}
-                        />
+                        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+                            <View style={styles.imagePickerSection}>
+                                {labelImageUri ? (
+                                    <View style={styles.imagePreviewWrapper}>
+                                        <TouchableOpacity onPress={handlePickImage} style={styles.imagePreviewContainer}>
+                                            <Image source={{ uri: labelImageUri }} style={styles.imagePreview} />
+                                            <View style={styles.changeImageBadge}>
+                                                <Text style={styles.changeImageText}>Edit Image</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => setLabelImageUri(undefined)} style={styles.removeImageLink}>
+                                            <Text style={styles.removeImageText}>Remove Image</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                ) : (
+                                    <TouchableOpacity onPress={handlePickImage} style={styles.imagePlaceholder}>
+                                        <Ionicons name="image-outline" size={28} color={Colors.textSecondary} />
+                                        <Text style={styles.imagePlaceholderText}>Row Image (Optional)</Text>
+                                    </TouchableOpacity>
+                                )}
+                            </View>
 
-                        <Text style={[styles.label, labelImageUri && { opacity: 0.5 }]}>
-                            Row Color {labelImageUri && "(Disabled with Image)"}
-                        </Text>
-                        <ColorPicker value={color} onChange={setColor} disabled={!!labelImageUri} />
-                    </ScrollView>
+                            <Text style={styles.label}>Tier Label</Text>
+                            <TextInput
+                                style={[styles.input, labelImageUri && styles.disabledInput]}
+                                placeholder="e.g. S, A, E, F..."
+                                placeholderTextColor={Colors.textMuted}
+                                value={label}
+                                onChangeText={setLabel}
+                                maxLength={10}
+                                editable={!labelImageUri}
+                            />
 
-                    <TouchableOpacity
-                        style={[
-                            styles.saveButton,
-                            (!label.trim() && !labelImageUri) && styles.disabledSaveButton
-                        ]}
-                        onPress={handleSave}
-                        disabled={!label.trim() && !labelImageUri}
-                    >
-                        <Text style={styles.saveButtonText}>Add Row</Text>
-                    </TouchableOpacity>
-                </View>
+                            <Text style={[styles.label, labelImageUri && { opacity: 0.5 }]}>
+                                Row Color {labelImageUri && "(Disabled with Image)"}
+                            </Text>
+                            <ColorPicker value={color} onChange={setColor} disabled={!!labelImageUri} />
+                        </ScrollView>
+
+                        <TouchableOpacity
+                            style={[
+                                styles.saveButton,
+                                (!label.trim() && !labelImageUri) && styles.disabledSaveButton
+                            ]}
+                            onPress={handleSave}
+                            disabled={!label.trim() && !labelImageUri}
+                        >
+                            <Text style={styles.saveButtonText}>Add Row</Text>
+                        </TouchableOpacity>
+                    </Animated.View>
+                </GestureDetector>
             </KeyboardAvoidingView>
         </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-    modalOverlay: {
+    overlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.6)',
         justifyContent: 'flex-end',
     },
-    modalContent: {
+    sheet: {
         backgroundColor: Colors.surface,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
+        borderTopLeftRadius: 32,
+        borderTopRightRadius: 32,
         paddingHorizontal: Spacing.l,
-        paddingTop: Spacing.l,
-        paddingBottom: Spacing.xl,
-        maxHeight: '100%',
+        paddingTop: Spacing.s,
+        paddingBottom: Platform.OS === 'ios' ? 40 : Spacing.xl,
+        maxHeight: '90%',
+        borderWidth: 1,
+        borderColor: Colors.border,
         ...Shadows.soft,
+    },
+    dragHandle: {
+        width: 40,
+        height: 5,
+        backgroundColor: Colors.border,
+        borderRadius: 3,
+        alignSelf: 'center',
+        marginBottom: Spacing.s,
     },
     header: {
         flexDirection: 'row',

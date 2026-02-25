@@ -17,12 +17,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { toggleTheme } from '../store/slices/tierSlice';
 import { getDesignTokens } from '../theme/theme';
+import { getStatusBarConfig } from '../utils/statusBar';
+import SmartBannerAd from '../components/SmartBannerAd';
 
 const SettingsScreen = ({ navigation }: any) => {
     const dispatch = useDispatch();
     const theme = useSelector((state: RootState) => state.tier.theme);
     const isDarkMode = theme === 'dark';
     const DESIGN = getDesignTokens(theme);
+    const { barStyle, backgroundColor: statusBarBg } = getStatusBarConfig(theme);
 
     const socialLinks = [
         { name: 'logo-instagram', url: 'https://www.instagram.com/asappstudio_official/', color: '#E1306C' },
@@ -173,7 +176,7 @@ const SettingsScreen = ({ navigation }: any) => {
 
     return (
         <SafeAreaView style={styles.root}>
-            <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} backgroundColor={DESIGN.bg} />
+            <StatusBar barStyle={barStyle} backgroundColor={statusBarBg} />
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
                     <Ionicons name="chevron-back" size={24} color={DESIGN.textSecondary} />
@@ -182,7 +185,8 @@ const SettingsScreen = ({ navigation }: any) => {
                 <View style={{ width: 40 }} />
             </View>
 
-            <ScrollView contentContainerStyle={styles.content}>
+            <View style={{ flex: 1 }}>
+                <ScrollView contentContainerStyle={styles.content}>
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Appearance</Text>
                     <View style={styles.item}>
@@ -201,10 +205,10 @@ const SettingsScreen = ({ navigation }: any) => {
                     </View>
                 </View>
 
-                <View style={styles.section}>
+                {/* <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Premium</Text>
                     {renderItem('diamond', 'Upgrade to Premium', DESIGN.amber, () => Alert.alert('Premium', 'Coming Soon!'))}
-                </View>
+                </View> */}
 
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Support & More</Text>
@@ -233,8 +237,11 @@ const SettingsScreen = ({ navigation }: any) => {
                     </View>
                 </View>
 
-                <Text style={styles.versionText}>Version 1.0.0</Text>
-            </ScrollView>
+                    <Text style={styles.versionText}>Version 1.0.0</Text>
+                </ScrollView>
+            </View>
+
+            <SmartBannerAd />
         </SafeAreaView>
     );
 };

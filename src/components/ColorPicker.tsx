@@ -20,7 +20,7 @@ interface ColorPickerProps {
     disabled?: boolean;
 }
 
-const SIZE = 240;
+const SIZE = 200;
 const CENTER = SIZE / 2;
 const OUTER_STROKE = 26;
 const INNER_STROKE = 18;
@@ -150,6 +150,7 @@ const ColorPicker = ({ value, onChange, disabled = false }: ColorPickerProps) =>
     const [hexInput, setHexInput] = useState(sanitizeHex(hsvToHex(fallback)));
     const [isTyping, setIsTyping] = useState(false);
     const controlRef = useRef<Control | null>(null);
+    const pendingHexRef = useRef<string | null>(null);
 
     useEffect(() => {
         const parsed = hexToHsv(value);
@@ -178,11 +179,11 @@ const ColorPicker = ({ value, onChange, disabled = false }: ColorPickerProps) =>
             setIsTyping(false);
             setHsv(prev => {
                 const next = normalizeHsv(updater(prev));
-                onChange?.(hsvToHex(next));
+                pendingHexRef.current = hsvToHex(next);
                 return next;
             });
         },
-        [onChange]
+        []
     );
 
     const setHueFromAngle = useCallback(
@@ -336,6 +337,17 @@ const ColorPicker = ({ value, onChange, disabled = false }: ColorPickerProps) =>
         [updateColor]
     );
 
+    useEffect(() => {
+        if (!pendingHexRef.current) return;
+        const emitted = pendingHexRef.current;
+        pendingHexRef.current = null;
+        const normalizedProp = sanitizeHex(value?.replace('#', '') || '');
+        if (sanitizeHex(emitted.replace('#', '')) === normalizedProp) {
+            return;
+        }
+        onChange?.(emitted);
+    }, [hsv, onChange, value]);
+
     return (
         <View style={[styles.wrapper, disabled && styles.wrapperDisabled]}>
             <View style={[styles.previewBox, { borderColor: DESIGN.border, backgroundColor: previewHex }]}>
@@ -365,7 +377,7 @@ const ColorPicker = ({ value, onChange, disabled = false }: ColorPickerProps) =>
                 >
                     <Svg
                         width="100%"
-                        height="100%"
+                        height="70%"
                         viewBox={`0 0 ${SIZE} ${SIZE}`}
                         pointerEvents="none"
                     >
@@ -401,47 +413,47 @@ const styles = StyleSheet.create({
         gap: 16,
     },
     wrapperDisabled: {
-            opacity: 0.4,
-        },
-        previewBox: {
-            borderWidth: 1,
-            borderRadius: 16,
-            padding: 16,
-            gap: 10,
-        },
-        hexInputWrapper: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderWidth: 1,
-            borderRadius: 14,
-            paddingHorizontal: 12,
-            paddingVertical: 6,
-        },
-        hexPrefix: {
-            fontSize: 16,
-            fontWeight: '800',
-            marginRight: 4,
-        },
-        hexInput: {
-            flex: 1,
-            fontSize: 18,
-            fontWeight: '800',
-            letterSpacing: 2,
-        },
-        previewLabel: {
-            fontSize: 12,
-            fontWeight: '700',
-            letterSpacing: 1,
-            textTransform: 'uppercase',
-        },
-        ringContainer: {
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        svgWrapper: {
-            width: '100%',
-            aspectRatio: 1,
-        },
+        opacity: 0.4,
+    },
+    previewBox: {
+        borderWidth: 1,
+        borderRadius: 16,
+        padding: 16,
+        gap: 10,
+    },
+    hexInputWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 14,
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+    },
+    hexPrefix: {
+        fontSize: 16,
+        fontWeight: '800',
+        marginRight: 4,
+    },
+    hexInput: {
+        flex: 1,
+        fontSize: 18,
+        fontWeight: '800',
+        letterSpacing: 2,
+    },
+    previewLabel: {
+        fontSize: 12,
+        fontWeight: '700',
+        letterSpacing: 1,
+        textTransform: 'uppercase',
+    },
+    ringContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    svgWrapper: {
+        width: '100%',
+        aspectRatio: 1,
+    },
 });
 
 export default ColorPicker;

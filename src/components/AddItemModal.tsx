@@ -14,6 +14,8 @@ import {
 import { Colors, Spacing, Shadows } from '../theme/theme';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring, runOnJS } from 'react-native-reanimated';
 
 interface AddItemModalProps {
     visible: boolean;
@@ -24,13 +26,34 @@ interface AddItemModalProps {
 const AddItemModal = ({ visible, onClose, onSave }: AddItemModalProps) => {
     const [text, setText] = useState('');
     const [imageUri, setImageUri] = useState<string | undefined>(undefined);
+    const translateY = useSharedValue(0);
+
+    const gesture = Gesture.Pan()
+        .onUpdate((event) => {
+            if (event.translationY > 0) {
+                translateY.value = event.translationY;
+            }
+        })
+        .onEnd((event) => {
+            if (event.translationY > 100 || event.velocityY > 500) {
+                runOnJS(onClose)();
+            } else {
+                translateY.value = withSpring(0);
+            }
+        });
+
+    const animatedStyle = useAnimatedStyle(() => ({
+        transform: [{ translateY: translateY.value }],
+    }));
 
     useEffect(() => {
         if (!visible) {
             setText('');
             setImageUri(undefined);
+        } else {
+            translateY.value = withSpring(0);
         }
-    }, [visible]);
+    }, [visible, translateY]);
 
     const handlePickImage = async () => {
         const result = await launchImageLibrary({
@@ -63,98 +86,116 @@ const AddItemModal = ({ visible, onClose, onSave }: AddItemModalProps) => {
         >
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={styles.modalOverlay}
+                style={styles.overlay}
             >
-                <View style={styles.modalContent}>
-                    <View style={styles.header}>
-                        <Text style={styles.title}>Add New Item</Text>
-                        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                            <Ionicons name="close" size={20} color={Colors.textMuted} />
-                        </TouchableOpacity>
-                    </View>
+                <GestureDetector gesture={gesture}>
+                    <Animated.View style={[styles.sheet, animatedStyle]}>
+                        <View style={styles.dragHandle} />
+                        <View style={styles.header}>
+                            <Text style={styles.title}>Add New Item</Text>
+                            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                                <Ionicons name="close" size={20} color={Colors.textMuted} />
+                            </TouchableOpacity>
+                        </View>
 
-                    <ScrollView contentContainerStyle={styles.scrollContent}>
-                        <View style={styles.imageSection}>
-                            {imageUri ? (
-                                <View style={styles.imagePreviewContainer}>
-                                    <Image source={{ uri: imageUri }} style={styles.imagePreview} />
-                                    <TouchableOpacity
-                                        style={styles.removeImageBadge}
-                                        onPress={handleRemoveImage}
-                                    >
-                                        <Ionicons name="close" size={16} color="white" />
-                                    </TouchableOpacity>
-                                </View>
-                            ) : (
-                                <TouchableOpacity
-                                    style={styles.imagePlaceholder}
-                                    onPress={handlePickImage}
-                                >
-                                    <View style={styles.imagePlaceholderIcon}>
-                                        <Ionicons name="camera-outline" size={36} color={Colors.textSecondary} />
+                        <ScrollView
+                            contentContainerStyle={styles.scrollContent}
+                            showsVerticalScrollIndicator={false}
+                        >
+                            <View style={styles.imageSection}>
+                                {imageUri ? (
+                                    <View style={styles.imagePreviewContainer}>
+                                        <Image source={{ uri: imageUri }} style={styles.imagePreview} />
+                                        <TouchableOpacity
+                                            style={styles.removeImageBadge}
+                                            onPress={handleRemoveImage}
+                                        >
+                                            <Ionicons name="close" size={16} color="white" />
+                                        </TouchableOpacity>
                                     </View>
-                                    <Text style={styles.imagePlaceholderText}>Pick an Image</Text>
-                                </TouchableOpacity>
-                            )}
-                        </View>
+                                ) : (
+                                    <TouchableOpacity
+                                        style={styles.imagePlaceholder}
+                                        onPress={handlePickImage}
+                                    >
+                                        <View style={styles.imagePlaceholderIcon}>
+                                            <Ionicons name="camera-outline" size={36} color={Colors.textSecondary} />
+                                        </View>
+                                        <Text style={styles.imagePlaceholderText}>Pick an Image</Text>
+                                    </TouchableOpacity>
+                                )}
+                            </View>
 
-                        <View style={styles.divider}>
-                            <View style={styles.line} />
-                            <Text style={styles.dividerText}>OR</Text>
-                            <View style={styles.line} />
-                        </View>
+                            <View style={styles.divider}>
+                                <View style={styles.line} />
+                                <Text style={styles.dividerText}>OR</Text>
+                                <View style={styles.line} />
+                            </View>
 
-                        <View style={styles.inputSection}>
-                            <Text style={styles.label}>Enter Text label</Text>
-                            <TextInput
-                                style={[
-                                    styles.input,
-                                    imageUri && styles.disabledInput
-                                ]}
-                                placeholder="e.g., E Tier Item"
-                                placeholderTextColor={Colors.textMuted}
-                                value={text}
-                                onChangeText={setText}
-                                editable={!imageUri}
-                                selectTextOnFocus={!imageUri}
-                            />
-                            {imageUri && (
-                                <Text style={styles.hintText}>
-                                    Text is disabled while image is selected.
-                                </Text>
-                            )}
-                        </View>
-                    </ScrollView>
+                            <View style={styles.inputSection}>
+                                <Text style={styles.label}>Enter Text label</Text>
+                                <TextInput
+                                    style={[
+                                        styles.input,
+                                        imageUri && styles.disabledInput
+                                    ]}
+                                    placeholder="e.g., E Tier Item"
+                                    placeholderTextColor={Colors.textMuted}
+                                    value={text}
+                                    onChangeText={setText}
+                                    editable={!imageUri}
+                                    selectTextOnFocus={!imageUri}
+                                />
+                                {imageUri && (
+                                    <Text style={styles.hintText}>
+                                        Text is disabled while image is selected.
+                                    </Text>
+                                )}
+                            </View>
+                        </ScrollView>
 
-                    <TouchableOpacity
-                        style={[
-                            styles.saveButton,
-                            !(imageUri || text.trim()) && styles.disabledSaveButton
-                        ]}
-                        onPress={handleSave}
-                        disabled={!(imageUri || text.trim())}
-                    >
-                        <Text style={styles.saveButtonText}>Add to Collection</Text>
-                    </TouchableOpacity>
-                </View>
+                        <TouchableOpacity
+                            style={[
+                                styles.saveButton,
+                                !(imageUri || text.trim()) && styles.disabledSaveButton
+                            ]}
+                            onPress={handleSave}
+                            disabled={!(imageUri || text.trim())}
+                        >
+                            <Text style={styles.saveButtonText}>Add to Collection</Text>
+                        </TouchableOpacity>
+                    </Animated.View>
+                </GestureDetector>
             </KeyboardAvoidingView>
         </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-    modalOverlay: {
+    overlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.6)',
         justifyContent: 'flex-end',
     },
-    modalContent: {
+    sheet: {
         backgroundColor: Colors.surface,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        padding: Spacing.m,
+        borderTopLeftRadius: 32,
+        borderTopRightRadius: 32,
+        paddingHorizontal: Spacing.l,
+        paddingTop: Spacing.s,
+        paddingBottom: Platform.OS === 'ios' ? 40 : Spacing.xl,
         maxHeight: '90%',
+        borderWidth: 1,
+        borderColor: Colors.border,
         ...Shadows.soft,
+    },
+    dragHandle: {
+        width: 40,
+        height: 5,
+        backgroundColor: Colors.border,
+        borderRadius: 3,
+        alignSelf: 'center',
+        marginBottom: Spacing.s,
     },
     header: {
         flexDirection: 'row',

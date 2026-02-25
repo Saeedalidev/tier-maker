@@ -8,7 +8,6 @@ import {
     StatusBar,
     TextInput,
     Alert,
-    Share,
     Platform,
     Animated,
     Dimensions,
@@ -17,9 +16,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { createNewList, reorderLists, deleteList, renameList } from '../store/slices/tierSlice';
-import { getDesignTokens } from '../theme/theme';
+import { getDesignTokens, Colors } from '../theme/theme';
+import { getStatusBarConfig } from '../utils/statusBar';
 import DraggableFlatList, { ScaleDecorator, RenderItemParams } from 'react-native-draggable-flatlist';
 import { TierList } from '../store/slices/tierSlice';
+import SmartBannerAd from '../components/SmartBannerAd';
 
 const { width } = Dimensions.get('window');
 
@@ -33,6 +34,7 @@ const AnimatedCard = ({
     onMenuPress,
     onRename,
     onShare,
+    onSave,
     onDelete,
     navigation,
     DESIGN,
@@ -49,10 +51,9 @@ const AnimatedCard = ({
     const totalItems = item.rows.reduce((acc: number, r: any) => acc + r.items.length, 0);
     const tierCount = item.rows.length;
 
-    // Deterministic pastel badge color per list
-    const hue = (parseInt(item.id.slice(-4), 16) || 0) % 360;
-    const badgeColor = `hsl(${hue}, 70%, 65%)`;
-    const badgeBg = `hsla(${hue}, 70%, 65%, 0.12)`;
+    // Uniform accent badge to keep icons consistent across cards
+    const badgeColor = DESIGN.accent;
+    const badgeBg = DESIGN.accentSoft;
 
     return (
         <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
@@ -74,15 +75,7 @@ const AnimatedCard = ({
                         {/* Icon badge */}
                         <View style={[styles.cardIconBadge, { backgroundColor: badgeBg }]}>
                             <Ionicons
-                                name={
-                                    totalItems === 0
-                                        ? 'document-text-outline'
-                                        : totalItems < 5
-                                            ? 'leaf-outline'
-                                            : totalItems < 15
-                                                ? 'flame-outline'
-                                                : 'ribbon-outline'
-                                }
+                                name="list-outline"
                                 size={18}
                                 color={badgeColor}
                             />
@@ -176,7 +169,7 @@ const AnimatedCard = ({
                                 label="Save"
                                 color={DESIGN.green}
                                 bg={DESIGN.greenSoft}
-                                onPress={() => Alert.alert('Save', 'Coming soon!')}
+                                onPress={() => onSave(item)}
                             />
                             <ActionButton
                                 icon="trash-outline"
@@ -195,7 +188,7 @@ const AnimatedCard = ({
 
 const ActionButton = ({ icon, label, color, bg, onPress }: any) => (
     <TouchableOpacity style={[styles.actionBtn, { backgroundColor: bg }]} onPress={onPress} activeOpacity={0.75}>
-        <View style={[styles.actionBtnIcon, { borderColor: `${color}30` }]}>
+        <View style={[styles.actionBtnIcon, { borderColor: `${color}60` }]}>
             <Ionicons name={icon} size={20} color={color} />
         </View>
         <Text style={[styles.actionBtnLabel, { color }]}>{label}</Text>
@@ -209,6 +202,7 @@ const HomeScreen = ({ navigation }: any) => {
     const theme = useSelector((state: RootState) => state.tier.theme);
     const isDarkMode = theme === 'dark';
     const DESIGN = getDesignTokens(theme);
+    const { barStyle, backgroundColor: statusBarBg } = getStatusBarConfig(theme);
 
     const [searchQuery, setSearchQuery] = useState('');
     const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
@@ -259,12 +253,17 @@ const HomeScreen = ({ navigation }: any) => {
         ]);
     };
 
-    const handleShare = async (item: TierList) => {
-        try {
-            await Share.share({ message: `Check out my Tier List: ${item.title}` });
-        } catch (error) {
-            console.error(error);
-        }
+    const navigateToExport = (item: TierList, intent: 'share' | 'save') => {
+        setActiveMenuId(null);
+        navigation.navigate('CreateTier', { id: item.id, autoExportIntent: intent });
+    };
+
+    const handleShareOptions = (item: TierList) => {
+        navigateToExport(item, 'share');
+    };
+
+    const handleSaveOptions = (item: TierList) => {
+        navigateToExport(item, 'save');
     };
 
     const totalRanked = tierLists.reduce(
@@ -274,7 +273,8 @@ const HomeScreen = ({ navigation }: any) => {
 
     return (
         <SafeAreaView style={[styles.root, { backgroundColor: DESIGN.bg }]}>
-            <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} backgroundColor={DESIGN.bg} />
+            <StatusBar barStyle={barStyle} backgroundColor={statusBarBg} />
+            <View style={{ flex: 1 }}>
 
             {/* ── Header ── */}
             <View style={[styles.header, { backgroundColor: DESIGN.bg, borderBottomColor: DESIGN.border }]}>
@@ -289,12 +289,12 @@ const HomeScreen = ({ navigation }: any) => {
                 </View>
 
                 <View style={styles.headerRight}>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
                         onPress={() => navigation.navigate('Premium')}
                     >
                         <Ionicons name="diamond-outline" size={20} color={DESIGN.accent} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <TouchableOpacity
                         style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
                         onPress={() => navigation.navigate('Settings')}
@@ -371,7 +371,8 @@ const HomeScreen = ({ navigation }: any) => {
                             onPress={() => navigation.navigate('CreateTier', { id: item.id })}
                             onMenuPress={handleMenuPress}
                             onRename={handleRenameTitle}
-                            onShare={handleShare}
+                            onShare={handleShareOptions}
+                            onSave={handleSaveOptions}
                             onDelete={confirmDelete}
                             navigation={navigation}
                             DESIGN={DESIGN}
@@ -400,6 +401,8 @@ const HomeScreen = ({ navigation }: any) => {
                     </View>
                 }
             />
+            </View>
+            <SmartBannerAd />
         </SafeAreaView>
     );
 };
@@ -429,10 +432,10 @@ const styles = StyleSheet.create({
         width: 38,
         height: 38,
         borderRadius: 11,
-        backgroundColor: '#7C5CFC', // Static primary
+        backgroundColor: Colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: '#7C5CFC',
+        shadowColor: Colors.primary,
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.5,
         shadowRadius: 10,
@@ -472,10 +475,10 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 10,
-        backgroundColor: '#7C5CFC',
+        backgroundColor: Colors.accent,
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: '#7C5CFC',
+        shadowColor: Colors.accent,
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.45,
         shadowRadius: 8,
@@ -496,7 +499,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     statValue: {
-        color: '#7C5CFC',
+        color: Colors.accent,
         fontSize: 20,
         fontWeight: '800',
         letterSpacing: -0.5,
@@ -715,11 +718,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
-        backgroundColor: '#7C5CFC',
+        backgroundColor: Colors.accent,
         paddingHorizontal: 24,
         paddingVertical: 13,
         borderRadius: 12,
-        shadowColor: '#7C5CFC',
+        shadowColor: Colors.accent,
         shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 0.45,
         shadowRadius: 12,
