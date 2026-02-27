@@ -11,6 +11,7 @@ import {
     Platform,
     Animated,
     Dimensions,
+    Image,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -276,131 +277,135 @@ const HomeScreen = ({ navigation }: any) => {
             <StatusBar barStyle={barStyle} backgroundColor={statusBarBg} />
             <View style={{ flex: 1 }}>
 
-            {/* ── Header ── */}
-            <View style={[styles.header, { backgroundColor: DESIGN.bg, borderBottomColor: DESIGN.border }]}>
-                <View style={styles.headerLeft}>
-                    <View style={styles.logoMark}>
-                        <Text style={styles.logoMarkText}>T</Text>
+                {/* ── Header ── */}
+                <View style={[styles.header, { backgroundColor: DESIGN.bg, borderBottomColor: DESIGN.border }]}>
+                    <View style={styles.headerLeft}>
+                        <View style={styles.logoMarkInner}>
+                            <Image
+                                source={require('../../assets/bootsplash/app_icon.png')}
+                                style={styles.logoImage}
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <View>
+                            <Text style={[styles.appName, { color: DESIGN.textPrimary }]}>TierMaker</Text>
+                            <Text style={[styles.appTagline, { color: DESIGN.textMuted }]}>Rank everything</Text>
+                        </View>
                     </View>
-                    <View>
-                        <Text style={[styles.appName, { color: DESIGN.textPrimary }]}>TierUP</Text>
-                        <Text style={[styles.appTagline, { color: DESIGN.textMuted }]}>Rank everything</Text>
-                    </View>
-                </View>
 
-                <View style={styles.headerRight}>
-                    {/* <TouchableOpacity
+                    <View style={styles.headerRight}>
+                        {/* <TouchableOpacity
                         style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
                         onPress={() => navigation.navigate('Premium')}
                     >
                         <Ionicons name="diamond-outline" size={20} color={DESIGN.accent} />
                     </TouchableOpacity> */}
-                    <TouchableOpacity
-                        style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
-                        onPress={() => navigation.navigate('Settings')}
-                    >
-                        <Ionicons name="settings-outline" size={20} color={DESIGN.textSecondary} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.fabSmall} onPress={handleCreateNew}>
-                        <Ionicons name="add" size={22} color="#fff" />
-                    </TouchableOpacity>
-                </View>
-            </View>
-
-            {/* ── Stats strip ── */}
-            <View style={[styles.statsStrip, { backgroundColor: DESIGN.surface, borderBottomColor: DESIGN.border }]}>
-                <View style={styles.statChip}>
-                    <Text style={styles.statValue}>{tierLists.length}</Text>
-                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Lists</Text>
-                </View>
-                <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
-                <View style={styles.statChip}>
-                    <Text style={styles.statValue}>{totalRanked}</Text>
-                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Ranked</Text>
-                </View>
-                <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
-                <View style={styles.statChip}>
-                    <Text style={[styles.statValue, { color: DESIGN.green }]}>
-                        {tierLists.length > 0 ? '↑' : '—'}
-                    </Text>
-                    <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Active</Text>
-                </View>
-            </View>
-
-            {/* ── Search ── */}
-            <View style={styles.searchWrapper}>
-                <View style={[styles.searchBox, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
-                    <Ionicons name="search-outline" size={17} color={DESIGN.textMuted} />
-                    <TextInput
-                        style={[styles.searchInput, { color: DESIGN.textPrimary }]}
-                        placeholder="Search lists…"
-                        placeholderTextColor={DESIGN.textMuted}
-                        value={searchQuery}
-                        onChangeText={setSearchQuery}
-                    />
-                    {searchQuery.length > 0 && (
-                        <TouchableOpacity onPress={() => setSearchQuery('')} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-                            <Ionicons name="close-circle" size={16} color={DESIGN.textMuted} />
+                        <TouchableOpacity
+                            style={[styles.headerIconBtn, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}
+                            onPress={() => navigation.navigate('Settings')}
+                        >
+                            <Ionicons name="settings-outline" size={20} color={DESIGN.textSecondary} />
                         </TouchableOpacity>
-                    )}
+                        <TouchableOpacity style={styles.fabSmall} onPress={handleCreateNew}>
+                            <Ionicons name="add" size={22} color="#fff" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            {/* ── Section label ── */}
-            <View style={styles.sectionHeader}>
-                <Text style={[styles.sectionLabel, { color: DESIGN.textSecondary }]}>
-                    {searchQuery ? `Results for "${searchQuery}"` : 'My Lists'}
-                </Text>
-                <Text style={[styles.sectionCount, { color: DESIGN.textMuted, backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>{filteredLists.length}</Text>
-            </View>
+                {/* ── Stats strip ── */}
+                <View style={[styles.statsStrip, { backgroundColor: DESIGN.surface, borderBottomColor: DESIGN.border }]}>
+                    <View style={styles.statChip}>
+                        <Text style={styles.statValue}>{tierLists.length}</Text>
+                        <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Lists</Text>
+                    </View>
+                    <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
+                    <View style={styles.statChip}>
+                        <Text style={styles.statValue}>{totalRanked}</Text>
+                        <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Ranked</Text>
+                    </View>
+                    <View style={[styles.statDivider, { backgroundColor: DESIGN.border }]} />
+                    <View style={styles.statChip}>
+                        <Text style={[styles.statValue, { color: DESIGN.green }]}>
+                            {tierLists.length > 0 ? '↑' : '—'}
+                        </Text>
+                        <Text style={[styles.statLabel, { color: DESIGN.textMuted }]}>Active</Text>
+                    </View>
+                </View>
 
-            {/* ── List ── */}
-            <DraggableFlatList
-                data={filteredLists}
-                onDragEnd={({ data }) => dispatch(reorderLists(data))}
-                keyExtractor={(item) => item.id}
-                activationDistance={20}
-                contentContainerStyle={styles.listContent}
-                renderItem={({ item, drag, isActive }: RenderItemParams<TierList>) => (
-                    <ScaleDecorator>
-                        <AnimatedCard
-                            item={item}
-                            drag={drag}
-                            isActive={isActive}
-                            isMenuOpen={activeMenuId === item.id}
-                            onPress={() => navigation.navigate('CreateTier', { id: item.id })}
-                            onMenuPress={handleMenuPress}
-                            onRename={handleRenameTitle}
-                            onShare={handleShareOptions}
-                            onSave={handleSaveOptions}
-                            onDelete={confirmDelete}
-                            navigation={navigation}
-                            DESIGN={DESIGN}
+                {/* ── Search ── */}
+                <View style={styles.searchWrapper}>
+                    <View style={[styles.searchBox, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
+                        <Ionicons name="search-outline" size={17} color={DESIGN.textMuted} />
+                        <TextInput
+                            style={[styles.searchInput, { color: DESIGN.textPrimary }]}
+                            placeholder="Search lists…"
+                            placeholderTextColor={DESIGN.textMuted}
+                            value={searchQuery}
+                            onChangeText={setSearchQuery}
                         />
-                    </ScaleDecorator>
-                )}
-                ListEmptyComponent={
-                    <View style={styles.emptyState}>
-                        <View style={[styles.emptyIconRing, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
-                            <Ionicons name="list-outline" size={38} color={DESIGN.textMuted} />
-                        </View>
-                        <Text style={[styles.emptyTitle, { color: DESIGN.textPrimary }]}>
-                            {searchQuery ? 'No results found' : 'No lists yet'}
-                        </Text>
-                        <Text style={[styles.emptyBody, { color: DESIGN.textMuted }]}>
-                            {searchQuery
-                                ? 'Try a different search term'
-                                : 'Create your first tier list and start ranking'}
-                        </Text>
-                        {!searchQuery && (
-                            <TouchableOpacity style={styles.emptyCreateBtn} onPress={handleCreateNew} activeOpacity={0.85}>
-                                <Ionicons name="add" size={18} color="#fff" />
-                                <Text style={styles.emptyCreateText}>Create List</Text>
+                        {searchQuery.length > 0 && (
+                            <TouchableOpacity onPress={() => setSearchQuery('')} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                                <Ionicons name="close-circle" size={16} color={DESIGN.textMuted} />
                             </TouchableOpacity>
                         )}
                     </View>
-                }
-            />
+                </View>
+
+                {/* ── Section label ── */}
+                <View style={styles.sectionHeader}>
+                    <Text style={[styles.sectionLabel, { color: DESIGN.textSecondary }]}>
+                        {searchQuery ? `Results for "${searchQuery}"` : 'My Lists'}
+                    </Text>
+                    <Text style={[styles.sectionCount, { color: DESIGN.textMuted, backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>{filteredLists.length}</Text>
+                </View>
+
+                {/* ── List ── */}
+                <DraggableFlatList
+                    data={filteredLists}
+                    onDragEnd={({ data }) => dispatch(reorderLists(data))}
+                    keyExtractor={(item) => item.id}
+                    activationDistance={20}
+                    contentContainerStyle={styles.listContent}
+                    renderItem={({ item, drag, isActive }: RenderItemParams<TierList>) => (
+                        <ScaleDecorator>
+                            <AnimatedCard
+                                item={item}
+                                drag={drag}
+                                isActive={isActive}
+                                isMenuOpen={activeMenuId === item.id}
+                                onPress={() => navigation.navigate('CreateTier', { id: item.id })}
+                                onMenuPress={handleMenuPress}
+                                onRename={handleRenameTitle}
+                                onShare={handleShareOptions}
+                                onSave={handleSaveOptions}
+                                onDelete={confirmDelete}
+                                navigation={navigation}
+                                DESIGN={DESIGN}
+                            />
+                        </ScaleDecorator>
+                    )}
+                    ListEmptyComponent={
+                        <View style={styles.emptyState}>
+                            <View style={[styles.emptyIconRing, { backgroundColor: DESIGN.surface, borderColor: DESIGN.border }]}>
+                                <Ionicons name="list-outline" size={38} color={DESIGN.textMuted} />
+                            </View>
+                            <Text style={[styles.emptyTitle, { color: DESIGN.textPrimary }]}>
+                                {searchQuery ? 'No results found' : 'No lists yet'}
+                            </Text>
+                            <Text style={[styles.emptyBody, { color: DESIGN.textMuted }]}>
+                                {searchQuery
+                                    ? 'Try a different search term'
+                                    : 'Create your first tier list and start ranking'}
+                            </Text>
+                            {!searchQuery && (
+                                <TouchableOpacity style={styles.emptyCreateBtn} onPress={handleCreateNew} activeOpacity={0.85}>
+                                    <Ionicons name="add" size={18} color="#fff" />
+                                    <Text style={styles.emptyCreateText}>Create List</Text>
+                                </TouchableOpacity>
+                            )}
+                        </View>
+                    }
+                />
             </View>
             <SmartBannerAd />
         </SafeAreaView>
@@ -428,24 +433,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 12,
     },
-    logoMark: {
+    logoMarkInner: {
         width: 38,
         height: 38,
         borderRadius: 11,
         backgroundColor: Colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: Colors.primary,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
-        elevation: 8,
+        overflow: 'hidden',
     },
-    logoMarkText: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: '900',
-        letterSpacing: -1,
+    logoImage: {
+        width: '100%',
+        height: '100%',
     },
     appName: {
         fontSize: 20,

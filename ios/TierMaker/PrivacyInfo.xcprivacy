@@ -43,6 +43,14 @@
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array/>
 	<key>NSPrivacyTracking</key>
-	<false/>
+	<true/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array>
+		<string>googleads.g.doubleclick.net</string>
+		<string>pagead2.googlesyndication.com</string>
+		<string>securepubads.g.doubleclick.net</string>
+		<string>www.googleadservices.com</string>
+		<string>adservice.google.com</string>
+	</array>
 </dict>
 </plist>

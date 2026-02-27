@@ -43,7 +43,7 @@ const SettingsScreen = ({ navigation }: any) => {
     };
 
     const handleFeedback = () => {
-        Linking.openURL('mailto:zeeshan@asappstudio.com?subject=Feedback for TierUP').catch(() =>
+        Linking.openURL('mailto:zeeshan@asappstudio.com?subject=Feedback for TierMaker').catch(() =>
             Alert.alert('Error', 'Could not open mail client.')
         );
     };
@@ -51,7 +51,7 @@ const SettingsScreen = ({ navigation }: any) => {
     const handleRateUs = () => {
         const url = Platform.OS === 'ios'
             ? 'itms-apps://apps.apple.com/app/id6757762588?action=write-review'
-            : 'https://play.google.com/store/apps/details?id=com.tiermaker.tierup';
+            : 'https://play.google.com/store/apps/details?id=com.tiermaker';
 
         Linking.openURL(url).catch(() =>
             Alert.alert('Error', 'Unable to open store page.')
@@ -187,55 +187,56 @@ const SettingsScreen = ({ navigation }: any) => {
 
             <View style={{ flex: 1 }}>
                 <ScrollView contentContainerStyle={styles.content}>
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Appearance</Text>
-                    <View style={styles.item}>
-                        <View style={styles.itemLeft}>
-                            <View style={[styles.itemIconWrap, { backgroundColor: `${DESIGN.accent}15` }]}>
-                                <Ionicons name={isDarkMode ? 'moon' : 'sunny'} size={20} color={DESIGN.accent} />
+                    <View style={styles.section}>
+                        <Text style={styles.sectionTitle}>Appearance</Text>
+                        <View style={styles.item}>
+                            <View style={styles.itemLeft}>
+                                <View style={[styles.itemIconWrap, { backgroundColor: `${DESIGN.accent}15` }]}>
+                                    <Ionicons name={isDarkMode ? 'moon' : 'sunny'} size={20} color={DESIGN.accent} />
+                                </View>
+                                <Text style={styles.itemLabel}>Dark Mode</Text>
                             </View>
-                            <Text style={styles.itemLabel}>Dark Mode</Text>
+                            <Switch
+                                value={isDarkMode}
+                                onValueChange={() => { dispatch(toggleTheme()); }}
+                                trackColor={{ false: '#767577', true: DESIGN.accent }}
+                                thumbColor={Platform.OS === 'ios' ? undefined : '#f4f3f4'}
+                            />
                         </View>
-                        <Switch
-                            value={isDarkMode}
-                            onValueChange={() => { dispatch(toggleTheme()); }}
-                            trackColor={{ false: '#767577', true: DESIGN.accent }}
-                            thumbColor={Platform.OS === 'ios' ? undefined : '#f4f3f4'}
-                        />
                     </View>
-                </View>
 
-                {/* <View style={styles.section}>
+                    {/* <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Premium</Text>
                     {renderItem('diamond', 'Upgrade to Premium', DESIGN.amber, () => Alert.alert('Premium', 'Coming Soon!'))}
                 </View> */}
 
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Support & More</Text>
-                    {renderItem('mail-outline', 'Feedback', DESIGN.accent, handleFeedback)}
-                    {renderItem('star-outline', 'Rate Us', DESIGN.cyan, handleRateUs)}
-                    {renderItem('apps-outline', 'More Apps', DESIGN.green, handleMoreApps)}
-                </View>
-
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>About</Text>
-                    {renderItem('information-circle-outline', 'About Us', DESIGN.accent, () => handleOpenURL('https://asappstudio.com/our-products/'))}
-                </View>
-
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Connect With Us</Text>
-                    <View style={styles.socialGrid}>
-                        {socialLinks.map((social, index) => (
-                            <TouchableOpacity
-                                key={index}
-                                style={styles.socialBtn}
-                                onPress={() => handleOpenURL(social.url)}
-                            >
-                                <Ionicons name={social.name} size={24} color={social.color} />
-                            </TouchableOpacity>
-                        ))}
+                    <View style={styles.section}>
+                        <Text style={styles.sectionTitle}>Support & More</Text>
+                        {renderItem('mail-outline', 'Feedback', DESIGN.accent, handleFeedback)}
+                        {renderItem('star-outline', 'Rate Us', DESIGN.cyan, handleRateUs)}
+                        {renderItem('apps-outline', 'More Apps', DESIGN.green, handleMoreApps)}
                     </View>
-                </View>
+
+                    <View style={styles.section}>
+                        <Text style={styles.sectionTitle}>About</Text>
+                        {renderItem('information-circle-outline', 'About Us', DESIGN.accent, () => handleOpenURL('https://asappstudio.com/our-products/'))}
+                        {renderItem('shield-checkmark-outline', 'Privacy Policy', DESIGN.cyan, () => handleOpenURL('https://asappstudio.com/privacy-policy/'))}
+                    </View>
+
+                    <View style={styles.section}>
+                        <Text style={styles.sectionTitle}>Connect With Us</Text>
+                        <View style={styles.socialGrid}>
+                            {socialLinks.map((social, index) => (
+                                <TouchableOpacity
+                                    key={index}
+                                    style={styles.socialBtn}
+                                    onPress={() => handleOpenURL(social.url)}
+                                >
+                                    <Ionicons name={social.name} size={24} color={social.color} />
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
 
                     <Text style={styles.versionText}>Version 1.0.0</Text>
                 </ScrollView>

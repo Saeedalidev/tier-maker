@@ -32,7 +32,7 @@ const AdConfirmDialog: React.FC<AdConfirmDialogProps> = ({
     errorMessage,
     onExportAnyway,
     title = 'Watch an ad to continue',
-    message = 'Viewing a short ad unlocks the save/share action and keeps TierUP free for everyone.',
+    message = 'Viewing a short ad unlocks the save/share action and keeps TierMaker free for everyone.',
 }) => {
     const theme = useSelector((state: RootState) => state.tier.theme);
     const D = getDesignTokens(theme);

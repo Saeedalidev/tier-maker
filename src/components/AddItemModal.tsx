@@ -93,9 +93,6 @@ const AddItemModal = ({ visible, onClose, onSave }: AddItemModalProps) => {
                         <View style={styles.dragHandle} />
                         <View style={styles.header}>
                             <Text style={styles.title}>Add New Item</Text>
-                            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                                <Ionicons name="close" size={20} color={Colors.textMuted} />
-                            </TouchableOpacity>
                         </View>
 
                         <ScrollView
@@ -199,7 +196,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: Spacing.s,
         marginBottom: Spacing.m,
@@ -208,19 +205,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '900',
         color: Colors.text,
-    },
-    closeButton: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        backgroundColor: Colors.surfaceLight,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    closeButtonText: {
-        fontSize: 18,
-        color: Colors.textMuted,
-        fontWeight: 'bold',
     },
     scrollContent: {
         paddingBottom: Spacing.xl,

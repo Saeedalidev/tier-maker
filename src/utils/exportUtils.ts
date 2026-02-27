@@ -17,8 +17,8 @@ const requestAndroidPhotoPermission = async () => {
             : PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
 
     const status = await PermissionsAndroid.request(permission, {
-        title: 'TierUP photo access',
-        message: 'Allow TierUP to save tier list images to your device.',
+        title: 'TierMaker photo access',
+        message: 'Allow TierMaker to save tier list images to your device.',
         buttonPositive: 'Allow',
         buttonNegative: 'Deny',
     });
@@ -47,7 +47,7 @@ const requestIOSPhotoPermission = async () => {
         if (status === 'blocked' || status === 'denied') {
             Alert.alert(
                 'Permission needed',
-                'Enable "Add Photos Only" access for TierUP in Settings > Privacy & Security > Photos to save your images.'
+                'Enable "Add Photos Only" access for TierMaker in Settings > Privacy & Security > Photos to save your images.'
             );
         }
 
@@ -87,13 +87,13 @@ export const exportTierList = async (
             const shareFallback = async () => {
                 await Share.share({
                     url: uri,
-                    title: options.title ? `TierUP - ${options.title}` : 'Share tier list image',
+                    title: options.title ? `TierMaker - ${options.title}` : 'Share tier list image',
                 });
             };
 
             try {
                 try {
-                    await CameraRoll.save(uri, { type: 'photo', album: 'TierUP' });
+                    await CameraRoll.save(uri, { type: 'photo', album: 'TierMaker' });
                 } catch (error) {
                     console.warn('Album save failed, retrying without album', error);
                     await CameraRoll.save(uri, { type: 'photo' });
@@ -128,7 +128,7 @@ export const exportTierList = async (
 
         await Share.share({
             url: uri,
-            title: options.title ? `TierUP - ${options.title}` : 'Share tier list',
+            title: options.title ? `TierMaker - ${options.title}` : 'Share tier list',
         });
     } catch (error) {
         console.error('Export error:', error);

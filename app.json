@@ -1,4 +1,7 @@
 {
   "name": "TierMaker",
-  "displayName": "Tier Maker: Ranking List Maker"
+  "displayName": "Tier Maker: Ranking List Maker",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-3572144641927803~4915004343"
+  }
 }

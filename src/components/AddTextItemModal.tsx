@@ -11,7 +11,6 @@ import {
     ScrollView
 } from 'react-native';
 import { Colors, Spacing, Shadows } from '../theme/theme';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import ColorPicker from './ColorPicker';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, runOnJS } from 'react-native-reanimated';
@@ -79,9 +78,6 @@ const AddTextItemModal = ({ visible, onClose, onSave }: AddTextItemModalProps) =
                         <View style={styles.dragHandle} />
                         <View style={styles.header}>
                             <Text style={styles.title}>Add Text Item</Text>
-                            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-                                <Ionicons name="close" size={20} color={Colors.textMuted} />
-                            </TouchableOpacity>
                         </View>
 
                         <ScrollView
@@ -155,7 +151,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: Spacing.s,
         marginBottom: Spacing.m,
@@ -164,19 +160,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '900',
         color: Colors.text,
-    },
-    closeButton: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        backgroundColor: Colors.surfaceLight,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    closeButtonText: {
-        fontSize: 18,
-        color: Colors.textMuted,
-        fontWeight: 'bold',
     },
     scrollContent: {
         paddingBottom: Spacing.xl,

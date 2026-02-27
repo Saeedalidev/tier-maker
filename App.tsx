@@ -15,12 +15,6 @@ const AppContent = () => {
   const theme = useSelector((state: RootState) => state.tier.theme);
   const { barStyle, backgroundColor: statusBarBg } = getStatusBarConfig(theme);
 
-  useEffect(() => {
-    if (!SHOW_ADS) return;
-    admobService.initialize().catch(error => {
-      console.warn('[AdMob] initialization error', error);
-    });
-  }, []);
 
   return (
     <>
@@ -37,11 +31,7 @@ function App(): React.JSX.Element {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Provider store={store}>
         <PersistGate
-          loading={
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1a1a2e' }}>
-              <ActivityIndicator size="large" color={Colors.accent} />
-            </View>
-          }
+          loading={null}
           persistor={persistor}
         >
           <AppContent />

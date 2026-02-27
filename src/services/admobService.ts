@@ -7,7 +7,7 @@ import MobileAds, {
 } from 'react-native-google-mobile-ads';
 
 // Toggle to globally enable/disable ads (helpful while testing)
-export const SHOW_ADS = false;
+export const SHOW_ADS = true;
 
 const IOS_REWARDED_ID = 'ca-app-pub-4844847303742824/2942740253';
 const IOS_BANNER_ID = 'ca-app-pub-4844847303742824/5568903598';
